@@ -34,4 +34,5 @@ Credits
 -------
 
 [YADR](https://github.com/skwp/dotfiles) : Showed me what vim could do and inspired me to do my own work.
+
 [Thoughbot](https://github.com/thoughbot/dotfiles) : More good learning form these guys.  You can find `rcm` here.
