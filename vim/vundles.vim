@@ -33,6 +33,7 @@ Bundle "briancollins/vim-jst"
 
 " Html, Xml, Css, Markdown...
 Bundle "groenewege/vim-less.git"
+Bundle "jtratner/vim-flavored-markdown"
 Bundle "kchmck/vim-coffee-script"
 Bundle "slim-template/vim-slim.git"
 Bundle "tpope/vim-haml"
