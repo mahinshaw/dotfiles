@@ -78,5 +78,8 @@ Bundle "skwp/vim-colors-solarized"
 Bundle "itchyny/lightline.vim"
 Bundle "vim-scripts/TagHighlight.git"
 
+" Tmux stuff
+Bundle "christoomey/vim-tmux-navigator"
+
 "Filetype plugin indent on is required by vundle
 filetype plugin indent on

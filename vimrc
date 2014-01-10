@@ -221,11 +221,9 @@ nnoremap <silent> <Leader>x :bn<CR>
 " ==============================
 " Window/Tab/Split Manipulation
 " ==============================
-" Move between split windows by using the four directions H, L, I, N
-nnoremap <silent> <C-h> <C-w>h
-nnoremap <silent> <C-l> <C-w>l
-nnoremap <silent> <C-k> <C-w>k
-nnoremap <silent> <C-j> <C-w>j
+" Move between split windows by using the four directions C-[h,j,k,l]
+" This is now handled via the vim-tmux-navigator.  The same commands apply in
+" tmux.
 
 " Make gf (go to file) create the file, if not existent
 nnoremap gf :e<cfile><CR>
