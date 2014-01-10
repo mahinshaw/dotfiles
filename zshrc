@@ -30,6 +30,18 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
+# ================ALIASES===================
+# use macvim in the terminal if it exits
+mvim --version > /dev/null 2>&l
+MACVIM_INSTALLED=$?
+if  [ $MACVIM_INSTALLED -eq 0 ]; then
+  alias vim="mvim -v"
+fi
+
+# *rc file editing
+alias ve="vim ~/.vimrc"
+alias ze="vim ~/.zshrc"
+alias zr="source ~/.zshrc"
 
 # jump to recently used items
 alias a='fasd -a' # any
@@ -49,3 +61,4 @@ alias df='df -h'
 alias ll='ls -alGh'
 alias ls='ls -Gh'
 alias du='du -h -d 2'
+
