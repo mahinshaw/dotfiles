@@ -32,7 +32,7 @@ unset fasd_cache
 
 # ================ALIASES===================
 # use macvim in the terminal if it exits
-mvim --version > /dev/null 2>&l
+mvim --version > /dev/null 2>&1
 MACVIM_INSTALLED=$?
 if  [ $MACVIM_INSTALLED -eq 0 ]; then
   alias vim="mvim -v"
