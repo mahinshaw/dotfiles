@@ -132,10 +132,10 @@ noremap! kj <ESC>
 " Now using the middle finger of either hand you can type
 " underscores with apple-k or apple-d, and add Shift
 " to type dashes
-imap <silent> <D-k> _
-imap <silent> <D-d> _
-imap <silent> <D-K> -
-imap <silent> <D-D> -
+imap <silent> <Leader>k _
+imap <silent> <Leader>d _
+imap <silent> <Leader>K -
+imap <silent> <Leader>D -
 
 " <Leader># Surround a word with #{ruby interpolation}
 map <Leader># ysiw#
@@ -234,15 +234,15 @@ nnoremap <C-w>gf :tabe<cfile><CR>
 map <silent> <Leader>gz <C-w>o
 
 " Use numbers to pick the tab you want (like iTerm)
-map <silent> <D-1> :tabn 1<cr>
-map <silent> <D-2> :tabn 2<cr>
-map <silent> <D-3> :tabn 3<cr>
-map <silent> <D-4> :tabn 4<cr>
-map <silent> <D-5> :tabn 5<cr>
-map <silent> <D-6> :tabn 6<cr>
-map <silent> <D-7> :tabn 7<cr>
-map <silent> <D-8> :tabn 8<cr>
-map <silent> <D-9> :tabn 9<cr>
+map <silent> <Leader>1 :tabn 1<cr>
+map <silent> <Leader>2 :tabn 2<cr>
+map <silent> <Leader>3 :tabn 3<cr>
+map <silent> <Leader>4 :tabn 4<cr>
+map <silent> <Leader>5 :tabn 5<cr>
+map <silent> <Leader>6 :tabn 6<cr>
+map <silent> <Leader>7 :tabn 7<cr>
+map <silent> <Leader>8 :tabn 8<cr>
+map <silent> <Leader>9 :tabn 9<cr>
 
 " Create window splits easier. The default
 " way is Ctrl-w,v and Ctrl-w,s. I remap
