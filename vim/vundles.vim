@@ -45,7 +45,7 @@ Bundle "tpope/vim-fugitive"
 Bundle "tpope/vim-git"
 
 " General text editing improvements...
-Bundle "Shougo/neocomplcache.git"
+Bundle "Shougo/neocomplete.git"
 Bundle "briandoll/change-inside-surroundings.vim.git"
 Bundle "godlygeek/tabular"
 Bundle "skwp/vim-easymotion"
