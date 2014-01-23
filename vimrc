@@ -127,7 +127,7 @@ endfunction
 " Hitting <ESC> sucks...
 " This works in insert and command mode
 noremap! jk <ESC>
-noremap! kj <ESC>
+" noremap! kj <ESC>
 
 " Now using the middle finger of either hand you can type
 " underscores with apple-k or apple-d, and add Shift
