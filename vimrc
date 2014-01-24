@@ -26,11 +26,11 @@ syntax on
 
 let mapleader=","
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundle.vim
-" Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
+" =============== NeoBundle Initialization ===============
+" This loads all the plugins specified in ~/.vim/bundle.vim
+" Use NeoBundle plugin to manage all other plugins
+if filereadable(expand("~/.vim/bundles.vim"))
+  source ~/.vim/bundles.vim
 endif
 
 " ================ Turn Off Swap Files ==============
