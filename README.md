@@ -4,6 +4,10 @@ my dotfiles
 Requirements
 ------------
 
+Install Vim with lua for [neocomplete](https://github.com/Shougo/neocomplete.vim)
+
+    brew (re)install vim --with-lua
+
 Change the shell to Z-Shell
 
     chsh -s /bin/zsh
@@ -24,7 +28,7 @@ Install iTerm2
 
 Install MacVim
 
-    brew install macvim
+    brew install macvim --with-cscope --with-lua --HEAD
 
 Install
 -------
@@ -59,6 +63,10 @@ What's in it?
 [vim](https://www.vim.org/) configurations:
 
 * lots and lots of stuff that i need to list and that i have copied from lots of people way smarter than me.
+
+[zsh](www.zsh.org) configurations:
+
+* Thanks to Prezto.
 
 Todo
 ----
