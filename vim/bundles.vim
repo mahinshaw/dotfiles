@@ -32,6 +32,7 @@ NeoBundle "tpope/vim-dispatch"
 " Other languages
 NeoBundle "pangloss/vim-javascript"
 NeoBundle "briancollins/vim-jst"
+NeoBundle "othree/javascript-libraries-syntax.vim"
 
 " Html, Xml, Css, Markdown...
 NeoBundle "groenewege/vim-less.git"
