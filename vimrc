@@ -121,6 +121,11 @@ function! YRRunAfterMaps()
   nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
 endfunction
 
+" Remap 0 and ^ because its better to get to the beggining of the text than
+" the line.
+nnoremap 0 ^
+nnoremap ^ 0
+
 " ========================================
 " RSI Prevention - keyboard remaps
 " ========================================
