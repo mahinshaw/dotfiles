@@ -62,4 +62,4 @@ alias df='df -h'
 alias ll='ls -alGh'
 alias ls='ls -Gh'
 alias du='du -h -d 2'
-
+alias ...='../..'
