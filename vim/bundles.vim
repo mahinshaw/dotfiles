@@ -40,6 +40,7 @@ NeoBundle "jtratner/vim-flavored-markdown"
 NeoBundle "kchmck/vim-coffee-script"
 NeoBundle "slim-template/vim-slim.git"
 NeoBundle "tpope/vim-haml"
+NeoBundle "suan/vim-instant-markdown"
 
 " Git related...
 NeoBundle "gregsexton/gitv"
