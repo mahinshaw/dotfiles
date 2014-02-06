@@ -18,7 +18,7 @@ Install [Prezto](https://github.com/sorin-ionescu/prezto)
 
 Install [rcm](https://github.com/thoughtbot/rcm)
 
-    brew tap thoughtbot/rcm
+    brew tap thoughtbot/formulae
     brew install rcm
 
 Recommended
@@ -39,11 +39,7 @@ Cone the repo on your machine:
 
 Install:
 
-    RCRC="rcrc" rcup -k
-
-or
-
-    rcup -k -x README.md
+    rcup
 
 The Current homebrew install is not up to date with source, and the hooks don't fire by default.
 Symlinks will be created in your home directory.
