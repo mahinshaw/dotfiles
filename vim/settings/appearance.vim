@@ -10,13 +10,13 @@ if has("gui_running")
   " Show the tab number on VimEnter
   autocmd VimEnter * set guitablabel=%N:\ %t\ %M
 
-  set lines=60
-  set columns=190
+  " set lines=60
+  " set columns=190
 
   if has("gui_gtk2")
     set guifont=Inconsolata\ XL\ 12,Inconsolata\ 15,Monaco\ 12
   else
-    set guifont=Inconsolata\ XL:h17,Inconsolata:h20,Monaco:h17
+    set guifont=Inconsolata\ XL:h14,Inconsolata:h17,Monaco:h14
   end
 else
   " dont load csapprox if we no gui support - silence annoying warning
