@@ -16,11 +16,11 @@ fi
 export PATH=$PATH:/opt/X11/bin
 
 # Chruby is awesome, let it do its magic
-if [[ -e /usr/local/share/chruby ]]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-  chruby $(cat ~/.ruby-version)
-fi
+# if [[ -e /usr/local/share/chruby ]]; then
+#   source /usr/local/share/chruby/chruby.sh
+#   source /usr/local/share/chruby/auto.sh
+#   chruby $(cat ~/.ruby-version)
+# fi
 
 # fasd for fast file searching
 # only init if installed.

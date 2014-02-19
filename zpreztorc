@@ -94,6 +94,13 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:prompt' theme 'sorin'
 
 #
+# Ruby
+#
+
+# Auto switch the ruby version on directory change
+zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
+#
 # Screen
 #
 
