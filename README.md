@@ -12,7 +12,7 @@ Change the shell to Z-Shell
 
     chsh -s /bin/zsh
 
-Install [Prezto](https://github.com/sorin-ionescu/prezto)
+Get [Prezto](https://github.com/sorin-ionescu/prezto)
 
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
@@ -24,7 +24,7 @@ Install [rcm](https://github.com/thoughtbot/rcm)
 Recommended
 -----------
 
-Install iTerm2
+Install [iTerm2](www.iterm2.com)
 
 Install MacVim
 
@@ -51,7 +51,7 @@ Stay up to date
 
     cd ~/.dotfiles && git pull origin master
 
-    cd && rcup -k
+    cd && rcup -x README.md
 
 What's in it?
 -------------
@@ -73,4 +73,4 @@ Credits
 
 [YADR](https://github.com/skwp/dotfiles) : Showed me what vim could do and inspired me to do my own work.
 
-[Thoughbot](https://github.com/thoughbot/dotfiles) : More good learning form these guys.  You can find `rcm` here.
+[Thoughbot](https://github.com/thoughbot/dotfiles) : More good learning from these guys.  You can find `rcm` here.
