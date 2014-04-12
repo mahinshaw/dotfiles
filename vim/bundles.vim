@@ -29,6 +29,10 @@ NeoBundle "Keithbsmiley/rspec.vim"
 NeoBundle "thoughtbot/vim-rspec"
 NeoBundle "tpope/vim-dispatch"
 
+" JVM Languages
+NeoBundle "derekwyatt/vim-scala"
+NeoBundle "derekwyatt/vim-sbt"
+
 " Other languages
 NeoBundle "pangloss/vim-javascript"
 NeoBundle "briancollins/vim-jst"

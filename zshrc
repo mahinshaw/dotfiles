@@ -12,9 +12,6 @@ fi
 
 # Customize to your needs...
 
-# allow use of X11
-export PATH=$PATH:/opt/X11/bin
-
 # Chruby is awesome, let it do its magic
 # if [[ -e /usr/local/share/chruby ]]; then
 #   source /usr/local/share/chruby/chruby.sh
