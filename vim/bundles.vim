@@ -33,6 +33,9 @@ NeoBundle "tpope/vim-dispatch"
 NeoBundle "derekwyatt/vim-scala"
 NeoBundle "derekwyatt/vim-sbt"
 
+" MONO!?!
+NeoBundle "timrobinson/fsharp-vim"
+
 " Other languages
 NeoBundle "pangloss/vim-javascript"
 NeoBundle "briancollins/vim-jst"

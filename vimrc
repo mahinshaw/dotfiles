@@ -292,6 +292,9 @@ noremap <Leader>hl :set hlsearch! hlsearch?<CR>
 nnoremap ' `
 nnoremap ` '
 
+" Use gg=G to format your xml!!!!
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
 " ================ Custom Settings ========================
 " This will load plugin based settings
 so ~/.vim/settings.vim
