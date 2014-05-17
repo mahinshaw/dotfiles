@@ -175,8 +175,6 @@ vmap <Leader>{ c{<C-R>"}<ESC>
 
 map <Leader>` ysiw`
 
-" gary bernhardt's hashrocket
-imap <c-l> <space>=><space>
 
 "Go to last edit location with <Leader>.
 nnoremap <Leader>. '.
@@ -258,10 +256,15 @@ nnoremap <D-Left> <C-w><
 nnoremap <D-Right>  <C-w>>
 
 " create <%= foo %> erb tags using Ctrl-k in edit mode
-imap <silent> <C-K> <%=  %><Esc>3hi
+imap <silent> <C-N> <%=  %><Esc>3hi
 
 " create <%= foo %> erb tags using Ctrl-j in edit mode
-imap <silent> <C-J> <%  %><Esc>2hi
+imap <silent> <C-M> <%  %><Esc>2hi
+
+" create -> and <- easier
+imap <C-l> <space>=><space>
+imap <C-J> <Space><-<Space>
+imap <C-K> <Space>-><Space>
 
 " ============================
 " Shortcuts for everyday tasks
