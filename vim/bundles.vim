@@ -35,6 +35,8 @@ NeoBundle "derekwyatt/vim-sbt"
 
 " MONO!?!
 NeoBundle "timrobinson/fsharp-vim"
+NeoBundle "OrangeT/vim-csharp"
+NeoBundle "nosami/Omnisharp"
 
 " Other languages
 NeoBundle "pangloss/vim-javascript"

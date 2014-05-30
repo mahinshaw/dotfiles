@@ -12,9 +12,6 @@ let g:neocomplete#max_list = 5
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" Map standard Ctrl-N completion to Cmd-Space
-inoremap <D-Space> <C-n>
-
 " This makes sure we use neocomplete completefunc instead of
 " the one in rails.vim, otherwise this plugin will crap out.
 " let g:neocomplete#force_overwrite_completefunc = 1
@@ -25,6 +22,10 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
     \ }
+
+" <TAB>: completion
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -39,3 +40,21 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+
+" Enable heavy omni completion
+
+call neocomplete#custom#source('_', 'sorters', [])
+
+if !exists('g:neocomplete#sources')
+  let g:neocomplete#sources = {}
+endif
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
+let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
+let g:neocomplete#sources.cs = ['omni']
+let g:neocomplete#enable_refresh_always = 0
+let g:neocomplete#enable_insert_char_pre = 1

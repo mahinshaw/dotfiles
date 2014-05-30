@@ -63,3 +63,6 @@ alias ...='../..'
 
 # aliases because I cannot type
 alias brwe='brew'
+
+# Mono
+alias fsi='fsharpi --nologo --consolecolors'
