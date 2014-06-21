@@ -41,6 +41,8 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+autocmd FileType fs,fsx setlocal omnifunc=fsharp#Complete
+autocmd FileType hs setlocal omnifunc=necoghc#omnifunc
 
 " Enable heavy omni completion
 

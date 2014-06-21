@@ -53,15 +53,15 @@ endif
 set autoindent    " always autoindent
 set smartindent   " syntax indenting, kinda smart
 set smarttab      " delete as tabs not spaces when expandtab is on
-set shiftwidth=4  " use two spaces for a tab
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2  " use two spaces for a tab
+set softtabstop=2
+set tabstop=2
 set expandtab     " use spaces instead of tabs
 
 filetype plugin on
 filetype indent on
 
-autocmd FileType ruby,eruby,yaml,scala,sbt set shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType fsharp,csharp,java set shiftwidth=4 softtabstop=4 tabstop=4
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 

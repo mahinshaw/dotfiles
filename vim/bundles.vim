@@ -29,6 +29,10 @@ NeoBundle "Keithbsmiley/rspec.vim"
 NeoBundle "thoughtbot/vim-rspec"
 NeoBundle "tpope/vim-dispatch"
 
+" Haskell
+NeoBundle "dag/vim2hs"
+NeoBundle "eagletmt/neco-ghc"
+
 " JVM Languages
 NeoBundle "derekwyatt/vim-scala"
 NeoBundle "derekwyatt/vim-sbt"
