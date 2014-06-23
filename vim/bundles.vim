@@ -12,12 +12,24 @@ filetype off
 
 set rtp+=~/.vim/bundle/neobundle.vim/
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " let NeoBundle manage Neobundle (required)
 NeoBundleFetch "Shougo/neobundle.vim"
 
 " All your bundles here
+
+NeoBundle "Shougo/vimproc.vim", { 'build': {
+  \   'windows': 'make -f make_mingw32.mak',
+  \   'cygwin': 'make -f make_cygwin.mak',
+  \   'mac': 'make -f make_mac.mak',
+  \   'unix': 'make -f make_unix.mak',
+  \ } }
+
+" Unite
+NeoBundle "Shougo/unite.vim"
+NeoBundle "Shougo/unite-outline"
+NeoBundle "Shougo/neomru.vim"
 
 " Ruby, Rails, Rake...
 NeoBundle "ecomba/vim-ruby-refactoring"
@@ -34,8 +46,8 @@ NeoBundle "dag/vim2hs"
 NeoBundle "eagletmt/neco-ghc"
 
 " JVM Languages
-NeoBundle "derekwyatt/vim-scala"
-NeoBundle "derekwyatt/vim-sbt"
+"NeoBundle "derekwyatt/vim-scala"
+"NeoBundle "derekwyatt/vim-sbt"
 
 " MONO!?!
 NeoBundle "timrobinson/fsharp-vim"
@@ -67,7 +79,7 @@ NeoBundle "godlygeek/tabular"
 NeoBundle "skwp/vim-easymotion"
 
 " File Navigation / Project Management
-NeoBundle "kien/ctrlp.vim"
+" NeoBundle "kien/ctrlp.vim"
 NeoBundle "tpope/vim-vinegar"
 
 " Search
@@ -77,7 +89,7 @@ NeoBundle "rking/ag.vim"
 NeoBundle "majutsushi/tagbar.git"
 NeoBundle "scrooloose/syntastic.git"
 NeoBundle "sjl/gundo.vim"
-NeoBundle "skwp/YankRing.vim"
+" NeoBundle "skwp/YankRing.vim"
 NeoBundle "tpope/vim-abolish.git"
 NeoBundle "tpope/vim-commentary.git"
 NeoBundle "tpope/vim-endwise.git"
@@ -91,12 +103,14 @@ NeoBundle "Keithbsmiley/investigate.vim"
 " Text objects
 
 " Cosmetics, color scheme, Powerline...
-NeoBundle "skwp/vim-colors-solarized"
+NeoBundle "altercation/vim-colors-solarized"
 NeoBundle "itchyny/lightline.vim"
 NeoBundle "vim-scripts/TagHighlight.git"
 
 " Tmux stuff
 NeoBundle "christoomey/vim-tmux-navigator"
+
+call neobundle#end()
 
 "Filetype plugin indent on is required by vundle
 filetype plugin indent on

@@ -61,7 +61,7 @@ set expandtab     " use spaces instead of tabs
 filetype plugin on
 filetype indent on
 
-autocmd FileType fsharp,csharp,java set shiftwidth=4 softtabstop=4 tabstop=4
+autocmd FileType haskell,fsharp,csharp,java set shiftwidth=4 softtabstop=4 tabstop=4
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
@@ -302,3 +302,6 @@ au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 " ================ Custom Settings ========================
 " This will load plugin based settings
 so ~/.vim/settings.vim
+
+" Enable details for NecoGHC
+let g:necoghc_enable_detailed_browse = 1
