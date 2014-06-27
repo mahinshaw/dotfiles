@@ -105,6 +105,8 @@ NeoBundle "Keithbsmiley/investigate.vim"
 
 " Cosmetics, color scheme, Powerline...
 NeoBundle "altercation/vim-colors-solarized"
+NeoBundle "vivkin/flatland.vim"
+NeoBundle "endel/vim-github-colorscheme"
 NeoBundle "itchyny/lightline.vim"
 NeoBundle "vim-scripts/TagHighlight.git"
 
