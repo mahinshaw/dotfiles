@@ -44,6 +44,7 @@ NeoBundle "tpope/vim-dispatch"
 " Haskell
 NeoBundle "dag/vim2hs"
 NeoBundle "eagletmt/neco-ghc"
+NeoBundle "bitc/hdevtools"
 
 " JVM Languages
 "NeoBundle "derekwyatt/vim-scala"

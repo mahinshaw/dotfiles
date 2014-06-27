@@ -61,7 +61,9 @@ set expandtab     " use spaces instead of tabs
 filetype plugin on
 filetype indent on
 
+" filetypes that need 4 spaces
 autocmd FileType haskell,fsharp,csharp,java set shiftwidth=4 softtabstop=4 tabstop=4
+
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
@@ -138,10 +140,10 @@ noremap! jk <ESC>
 " Now using the middle finger of either hand you can type
 " underscores with apple-k or apple-d, and add Shift
 " to type dashes
-imap <silent> <Leader>k _
-imap <silent> <Leader>d _
-imap <silent> <Leader>K -
-imap <silent> <Leader>D -
+imap <silent> <D-k> _
+imap <silent> <D-d> _
+imap <silent> <D-K> -
+imap <silent> <D-D> -
 
 " <Leader># Surround a word with #{ruby interpolation}
 map <Leader># ysiw#
@@ -256,11 +258,11 @@ nnoremap <D-Down> <C-w>-
 nnoremap <D-Left> <C-w><
 nnoremap <D-Right>  <C-w>>
 
-" create <%= foo %> erb tags using Ctrl-k in edit mode
-imap <silent> <C-N> <%=  %><Esc>3hi
+" create <%= foo %> erb tags using Ctrl-N in edit mode
+autocmd FileType eruby imap <silent> <C-N> <%=  %><Esc>3hi
 
-" create <%= foo %> erb tags using Ctrl-j in edit mode
-imap <silent> <C-M> <%  %><Esc>2hi
+" create <%= foo %> erb tags using Ctrl-M in edit mode
+autocmd FileType eruby imap <silent> <C-M> <%  %><Esc>2hi
 
 " create -> and <- easier
 imap <C-l> <space>=><space>
@@ -296,12 +298,21 @@ noremap <Leader>hl :set hlsearch! hlsearch?<CR>
 nnoremap ' `
 nnoremap ` '
 
+" quicker way to get to the command mru
+nmap <C-c> q:
+
 " Use gg=G to format your xml!!!!
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
+" ================ Plugin Related =========================
+" Haskell Hdevtools
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> :HdevtoolsClear<CR>
+
+" Enable details for NecoGHC
+let g:necoghc_enable_detailed_browse = 1
 
 " ================ Custom Settings ========================
 " This will load plugin based settings
 so ~/.vim/settings.vim
 
-" Enable details for NecoGHC
-let g:necoghc_enable_detailed_browse = 1

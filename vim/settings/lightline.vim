@@ -9,36 +9,26 @@ let g:lightline = {
       \   'fugitive': 'MyFugitive',
       \   'readonly': 'MyReadonly',
       \   'modified': 'MyModified',
-      \   'filename': 'MyFilename'
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode'
       \ },
       \ 'separator': { 'left' : '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
 
 function! MyModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
+  return &ft =~ 'help\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "⭤"
-  else
-    return ""
-  endif
+  return &ft !~? 'help\|gundo' && &readonly ? '⭤' : ''
 endfunction
 
 function! MyFugitive()
-  if exists('*fugitive#head')
+  if &ft !~? 'gundo' && exists('*fugitive#head')
     let _ = fugitive#head()
     return strlen(_) ? '⭠ '._ : ''
   endif
@@ -47,6 +37,19 @@ endfunction
 
 function! MyFilename()
   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ (&ft == 'unite' ? unite#get_status_string() :
+       \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&fileencoding) ? &fileencoding : &encoding) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
