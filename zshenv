@@ -17,9 +17,3 @@ fi
 export JAVA_HOME=$(/usr/libexec/java_home)
 export SCALA_HOME=/usr/local/Cellar/scala/libexec
 export GROOVY_HOME=/usr/local/Cellar/groovy/libexec
-
-#Haskell
-export PATH=~/.cabal/bin:$PATH
-
-# OpenIDE
-export PATH=$PATH:/Users/mark/OpenIDE/ReleaseBinaries
