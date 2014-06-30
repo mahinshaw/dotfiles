@@ -44,7 +44,8 @@ NeoBundle "tpope/vim-dispatch"
 " Haskell
 NeoBundle "dag/vim2hs"
 NeoBundle "eagletmt/neco-ghc"
-NeoBundle "bitc/hdevtools"
+NeoBundle "eagletmt/ghcmod-vim"
+"NeoBundle "bitc/hdevtools"
 
 " JVM Languages
 "NeoBundle "derekwyatt/vim-scala"
@@ -107,6 +108,7 @@ NeoBundle "Keithbsmiley/investigate.vim"
 NeoBundle "altercation/vim-colors-solarized"
 NeoBundle "vivkin/flatland.vim"
 NeoBundle "endel/vim-github-colorscheme"
+NeoBundle "sjl/badwolf"
 NeoBundle "itchyny/lightline.vim"
 NeoBundle "vim-scripts/TagHighlight.git"
 

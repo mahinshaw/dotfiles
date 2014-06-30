@@ -306,8 +306,8 @@ au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
 " ================ Plugin Related =========================
 " Haskell Hdevtools
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> :HdevtoolsClear<CR>
+"au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+"au FileType haskell nnoremap <buffer> <silent> :HdevtoolsClear<CR>
 
 " Enable details for NecoGHC
 let g:necoghc_enable_detailed_browse = 1
