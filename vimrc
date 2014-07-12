@@ -305,9 +305,9 @@ nmap <C-c> q:
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
 " ================ Plugin Related =========================
-" Haskell Hdevtools
-"au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-"au FileType haskell nnoremap <buffer> <silent> :HdevtoolsClear<CR>
+" vim-instant-markdown
+" Only open the browser when I want it (:InstantMarkdownPreview)
+let g:instant_markdown_autostart = 0
 
 " Enable details for NecoGHC
 let g:necoghc_enable_detailed_browse = 1

@@ -43,6 +43,7 @@ NeoBundle "tpope/vim-dispatch"
 
 " Haskell
 NeoBundle "dag/vim2hs"
+NeoBundle "Twinside/vim-hoogle"
 NeoBundle "eagletmt/neco-ghc"
 NeoBundle "eagletmt/ghcmod-vim"
 "NeoBundle "bitc/hdevtools"
@@ -63,10 +64,11 @@ NeoBundle "othree/javascript-libraries-syntax.vim"
 
 " Html, Xml, Css, Markdown...
 NeoBundle "groenewege/vim-less.git"
-NeoBundle "jtratner/vim-flavored-markdown"
 NeoBundle "kchmck/vim-coffee-script"
 NeoBundle "slim-template/vim-slim.git"
 NeoBundle "tpope/vim-haml"
+NeoBundle "tpope/vim-markdown"
+NeoBundle "jtratner/vim-flavored-markdown"
 NeoBundle "suan/vim-instant-markdown"
 
 " Git related...
@@ -117,7 +119,7 @@ NeoBundle "christoomey/vim-tmux-navigator"
 
 call neobundle#end()
 
-"Filetype plugin indent on is required by vundle
+"Filetype plugin indent on is required by neobundle
 filetype plugin indent on
 
 " Installation check
