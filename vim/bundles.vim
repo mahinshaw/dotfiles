@@ -75,9 +75,10 @@ NeoBundle "suan/vim-instant-markdown"
 NeoBundle "gregsexton/gitv"
 NeoBundle "tpope/vim-fugitive"
 NeoBundle "tpope/vim-git"
+NeoBundle "airblade/vim-gitgutter"
 
 " General text editing improvements...
-NeoBundle "Shougo/neocomplete.git"
+NeoBundle "Shougo/neocomplete.vim"
 NeoBundle "briandoll/change-inside-surroundings.vim.git"
 NeoBundle "godlygeek/tabular"
 NeoBundle "skwp/vim-easymotion"
@@ -107,10 +108,17 @@ NeoBundle "Keithbsmiley/investigate.vim"
 " Text objects
 
 " Cosmetics, color scheme, Powerline...
+" Colorschemes
 NeoBundle "altercation/vim-colors-solarized"
 NeoBundle "vivkin/flatland.vim"
-NeoBundle "endel/vim-github-colorscheme"
+" NeoBundle "endel/vim-github-colorscheme"
+NeoBundle "noahfrederick/vim-hemisu"
+NeoBundle "croaky/vim-colors-github"
 NeoBundle "sjl/badwolf"
+NeoBundle "nanotech/jellybeans.vim"
+NeoBundle "tomasr/molokai"
+NeoBundle "akmassey/vim-codeschool"
+" Cosmetics
 NeoBundle "itchyny/lightline.vim"
 NeoBundle "vim-scripts/TagHighlight.git"
 

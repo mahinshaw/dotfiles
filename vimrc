@@ -312,6 +312,10 @@ let g:instant_markdown_autostart = 0
 " Enable details for NecoGHC
 let g:necoghc_enable_detailed_browse = 1
 
+" =============== Haskell =================================
+" set wildignore+=*.hi,*.chi
+" autocmd BufEnter *.hs compiler ghc
+
 " ================ Custom Settings ========================
 " This will load plugin based settings
 so ~/.vim/settings.vim
