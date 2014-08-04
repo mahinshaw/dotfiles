@@ -51,8 +51,13 @@ NeoBundle "eagletmt/neco-ghc"
 "NeoBundle "eagletmt/ghcmod-vim"
 NeoBundle "bitc/hdevtools"
 
-" Clojure Languages
+" Clojure
 NeoBundle "kien/rainbow_parentheses.vim"
+NeoBundle "guns/vim-clojure-static"
+NeoBundle "guns/vim-clojure-highlight"
+NeoBundle "guns/vim-slamhound"
+NeoBundle "guns/vim-sexp"
+NeoBundle "tpope/vim-sexp-mappings-for-regular-people"
 NeoBundle "tpope/vim-fireplace"
 NeoBundle "tpope/vim-leiningen"
 NeoBundle "tpope/vim-classpath"
