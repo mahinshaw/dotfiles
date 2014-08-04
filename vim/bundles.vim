@@ -19,17 +19,20 @@ NeoBundleFetch "Shougo/neobundle.vim"
 
 " All your bundles here
 
-NeoBundle "Shougo/vimproc.vim", { 'build': {
-  \   'windows': 'make -f make_mingw32.mak',
-  \   'cygwin': 'make -f make_cygwin.mak',
-  \   'mac': 'make -f make_mac.mak',
-  \   'unix': 'make -f make_unix.mak',
-  \ } }
+NeoBundle "Shougo/vimproc.vim", {
+  \ 'build': {
+  \    'windows': 'tools\\update-dll-mingw',
+  \    'cygwin': 'make -f make_cygwin.mak',
+  \    'mac': 'make -f make_mac.mak',
+  \    'unix': 'make -f make_unix.mak',
+  \   },
+  \ }
 
 " Unite
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/unite-outline"
 NeoBundle "Shougo/neomru.vim"
+NeoBundle "Shougo/neocomplete.vim"
 
 " Ruby, Rails, Rake...
 NeoBundle "ecomba/vim-ruby-refactoring"
@@ -45,12 +48,14 @@ NeoBundle "tpope/vim-dispatch"
 NeoBundle "dag/vim2hs"
 NeoBundle "Twinside/vim-hoogle"
 NeoBundle "eagletmt/neco-ghc"
-NeoBundle "eagletmt/ghcmod-vim"
-"NeoBundle "bitc/hdevtools"
+"NeoBundle "eagletmt/ghcmod-vim"
+NeoBundle "bitc/hdevtools"
 
-" JVM Languages
-"NeoBundle "derekwyatt/vim-scala"
-"NeoBundle "derekwyatt/vim-sbt"
+" Clojure Languages
+NeoBundle "kien/rainbow_parentheses.vim"
+NeoBundle "tpope/vim-fireplace"
+NeoBundle "tpope/vim-leiningen"
+NeoBundle "tpope/vim-classpath"
 
 " MONO!?!
 NeoBundle "timrobinson/fsharp-vim"
@@ -75,13 +80,12 @@ NeoBundle "suan/vim-instant-markdown"
 NeoBundle "gregsexton/gitv"
 NeoBundle "tpope/vim-fugitive"
 NeoBundle "tpope/vim-git"
-NeoBundle "airblade/vim-gitgutter"
+"NeoBundle "airblade/vim-gitgutter"
 
 " General text editing improvements...
-NeoBundle "Shougo/neocomplete.vim"
 NeoBundle "briandoll/change-inside-surroundings.vim.git"
 NeoBundle "godlygeek/tabular"
-NeoBundle "skwp/vim-easymotion"
+"NeoBundle "skwp/vim-easymotion"
 
 " File Navigation / Project Management
 " NeoBundle "kien/ctrlp.vim"
