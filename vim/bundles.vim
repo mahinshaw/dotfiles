@@ -42,7 +42,6 @@ NeoBundle "tpope/vim-bundler.git"
 NeoBundle "vim-ruby/vim-ruby.git"
 NeoBundle "Keithbsmiley/rspec.vim"
 NeoBundle "thoughtbot/vim-rspec"
-NeoBundle "tpope/vim-dispatch"
 
 " Haskell
 NeoBundle "dag/vim2hs"
@@ -53,6 +52,7 @@ NeoBundle "bitc/hdevtools"
 
 " Clojure
 NeoBundle "kien/rainbow_parentheses.vim"
+" NeoBundle "amdt/vim-niji"
 NeoBundle "guns/vim-clojure-static"
 NeoBundle "guns/vim-clojure-highlight"
 NeoBundle "guns/vim-slamhound"
@@ -100,7 +100,8 @@ NeoBundle "tpope/vim-vinegar"
 NeoBundle "rking/ag.vim"
 
 " General vim improvements
-NeoBundle "majutsushi/tagbar.git"
+NeoBundle "tpope/vim-dispatch"
+" NeoBundle "majutsushi/tagbar.git"
 NeoBundle "scrooloose/syntastic.git"
 NeoBundle "sjl/gundo.vim"
 " NeoBundle "skwp/YankRing.vim"
@@ -120,13 +121,14 @@ NeoBundle "Keithbsmiley/investigate.vim"
 " Colorschemes
 NeoBundle "altercation/vim-colors-solarized"
 NeoBundle "vivkin/flatland.vim"
-" NeoBundle "endel/vim-github-colorscheme"
-NeoBundle "noahfrederick/vim-hemisu"
-NeoBundle "croaky/vim-colors-github"
+NeoBundle "w0ng/vim-hybrid"
+NeoBundle "endel/vim-github-colorscheme"
+" NeoBundle "croaky/vim-colors-github"
 NeoBundle "sjl/badwolf"
-NeoBundle "nanotech/jellybeans.vim"
-NeoBundle "tomasr/molokai"
-NeoBundle "akmassey/vim-codeschool"
+" NeoBundle "nanotech/jellybeans.vim"
+" NeoBundle "tomasr/molokai"
+" NeoBundle "nielsmadan/harlequin"
+
 " Cosmetics
 NeoBundle "itchyny/lightline.vim"
 NeoBundle "vim-scripts/TagHighlight.git"

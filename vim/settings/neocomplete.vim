@@ -6,7 +6,7 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 
 " Default # of completions is 100, that's crazy.
-let g:neocomplete#max_list = 5
+let g:neocomplete#max_list = 10
 
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -14,7 +14,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " This makes sure we use neocomplete completefunc instead of
 " the one in rails.vim, otherwise this plugin will crap out.
-" let g:neocomplete#force_overwrite_completefunc = 1
+ let g:neocomplete#force_overwrite_completefunc = 1
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {

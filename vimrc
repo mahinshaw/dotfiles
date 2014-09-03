@@ -265,9 +265,9 @@ autocmd FileType eruby imap <silent> <C-N> <%=  %><Esc>3hi
 autocmd FileType eruby imap <silent> <C-M> <%  %><Esc>2hi
 
 " create -> and <- easier
-imap <C-l> <space>=><space>
-imap <C-J> <Space><-<Space>
-imap <C-K> <Space>-><Space>
+imap <C-l> =><space>
+imap <C-J> <-<Space>
+imap <C-K> -><Space>
 
 " ============================
 " Shortcuts for everyday tasks

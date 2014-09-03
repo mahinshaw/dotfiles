@@ -1,9 +1,10 @@
 " Use solarized colorscheme and powerline fonts
 " http://ethanschooner.com/solarized/vim-colors-solarized
-colorscheme solarized
+colorscheme hybrid
 set background=dark
 
 if has("gui_running")
+  " colorscheme flatland
   "tell the term we have 256 colors
   set t_Co=256
 
