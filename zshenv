@@ -14,6 +14,10 @@ fi
 # X11
 # export PATH=$PATH:/opt/X11/bin
 # JVM
-export JAVA_HOME=$(/usr/libexec/java_home)
-export SCALA_HOME=/usr/local/Cellar/scala/libexec
-export GROOVY_HOME=/usr/local/Cellar/groovy/libexec
+if [[ "$OSTYPE" == darwin*]]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+  export SCALA_HOME=/usr/local/Cellar/scala/libexec
+  export GROOVY_HOME=/usr/local/Cellar/groovy/libexec
+elif 
+  export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+fi
