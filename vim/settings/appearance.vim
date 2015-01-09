@@ -1,5 +1,10 @@
 " Use solarized colorscheme and powerline fonts
 " http://ethanschooner.com/solarized/vim-colors-solarized
+if has("mac")
+   let g:hybrid_use_iTerm_colors = 1
+elseif has("unix")   
+    let g:hybrid_use_Xresources = 1
+endif
 colorscheme hybrid
 set background=dark
 

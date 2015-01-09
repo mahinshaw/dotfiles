@@ -56,8 +56,10 @@ alias zmv='noglob zmv -W'
 # alias mappings - not related to a plugin
 # human readable outputs
 alias df='df -h'
-alias ll='ls -alGh'
-alias ls='ls -Gh'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias ll='ls -alGh'
+  alias ls='ls -Gh'
+fi
 alias du='du -h -d 2'
 alias ...='../..'
 
