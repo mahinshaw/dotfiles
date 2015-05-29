@@ -1,12 +1,12 @@
-" Use solarized colorscheme and powerline fonts
-" http://ethanschooner.com/solarized/vim-colors-solarized
+" Use hybrid colorscheme and powerline fonts
+" https://github.com/w0ng/vim-hybrid
 if has("mac")
-   let g:hybrid_use_iTerm_colors = 1
-elseif has("unix")   
-    let g:hybrid_use_Xresources = 1
+  let g:hybrid_use_iTerm_colors = 1
+elseif has("linux")
+  let g:hybrid_use_Xresources = 1
 endif
 colorscheme hybrid
-set background=dark
+" set background=dark
 
 if has("gui_running")
   " colorscheme flatland

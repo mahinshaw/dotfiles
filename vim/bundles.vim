@@ -63,7 +63,18 @@ NeoBundle "tpope/vim-leiningen"
 NeoBundle "tpope/vim-classpath"
 
 " MONO!?!
-NeoBundle "timrobinson/fsharp-vim"
+NeoBundle "fsharp/fsharpbinding", {
+          \ 'description': 'F# support for Vim',
+          \ 'rtp': 'vim',
+          \ 'lazy': 1,
+          \ 'autoload': {'filetypes': 'fsharp'},
+          \ 'build': {
+          \   'mac':   'make -C vim fsautocomplete',
+          \   'linux': 'make -C vim fsautocomplete',
+          \   'unix':  'make -C vim fsautocomplete',
+          \ },
+          \ 'build_commands': ['make', 'mozroots', 'xbuild'],
+          \}
 NeoBundle "OrangeT/vim-csharp"
 NeoBundle "nosami/Omnisharp"
 
