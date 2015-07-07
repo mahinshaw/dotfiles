@@ -23,6 +23,7 @@
      ;; better-defaults
      clojure
      colors
+     csharp
      emacs-lisp
 
      ;; Use evil-commentary instead of evil-nerd-commenter
@@ -30,6 +31,7 @@
      fsharp
      (git :variables
           git-magit-status-fullscreen t)
+     github
      html
      javascript
      markdown
@@ -82,11 +84,11 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(flatland
+                         spacemacs-dark
+                         spacemacs-light
                          misterioso
                          solarized-light
                          solarized-dark
-                         spacemacs-light
-                         spacemacs-dark
                          leuven
                          monokai
                          zenburn)
@@ -156,7 +158,7 @@ before layers configuration."
    ;; point when it reaches the top or bottom of the screen.
    dotspacemacs-smooth-scrolling t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    ;; Select a scope to highlight delimiters. Possible value is `all',
    ;; `current' or `nil'. Default is `all'
    dotspacemacs-highlight-delimiters 'all
@@ -183,7 +185,7 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq powerline-default-separator 'bar)
+  (setq powerline-default-separator 'box)
 
   ;; custom key-binding for evil mode.
   ;; the (kbd arg) allows binging from keyboard with control, meta, and shift operators.
@@ -235,12 +237,28 @@ layers configuration."
 
     ;; hook in on startup
     ;; 24.4 add toggle-frame-maximized and toggle-frame-fullscreen
-    (if (functionp 'toggle-frame-maximized)  
+    (if (functionp 'toggle-frame-maximized)
         (add-hook 'window-setup-hook 'toggle-frame-maximized t)
       (add-hook 'window-setup-hook 'maximize-frame t))
     (if (functionp 'toggle-frame-fullscreen)
         (global-set-key (kbd "M-RET") 'toggle-frame-fullscreen))
-    )
+    ;; GnuTLS
+    (when 'gnutls-available-p
+      (setq gnutls-trustfiles "C:/Users/Mark/.ssh/cacert.pem"))
+
+    ;; (prefer-coding-system 'utf-8)
+    ;; force unix line endings.
+    (prefer-coding-system 'utf-8-unix))
+
+  ;; Linux specific settings
+  (when (equal system-type 'gnu/linux)
+    (progn
+      (defun toggle-fullscreen ()
+        (interactive)
+        (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
+                                                 nil
+                                               'fullboth)))
+      (global-set-key [(super return)] 'toggle-fullscreen)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
