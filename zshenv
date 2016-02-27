@@ -10,6 +10,9 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+# Fix issue where path_helper in El Cap runs later than it used to.
+export PATH=$PATH:/usr/local/bin
+
 # environment variables.
 # X11
 # export PATH=$PATH:/opt/X11/bin

@@ -6,7 +6,7 @@ elseif has("linux")
   let g:hybrid_use_Xresources = 1
 endif
 colorscheme hybrid
-" set background=dark
+set background=dark
 
 if has("gui_running")
   " colorscheme flatland

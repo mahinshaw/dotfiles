@@ -35,20 +35,20 @@ NeoBundle "Shougo/neomru.vim"
 NeoBundle "Shougo/neocomplete.vim"
 
 " Ruby, Rails, Rake...
-NeoBundle "ecomba/vim-ruby-refactoring"
-NeoBundle "tpope/vim-rails.git"
-NeoBundle "tpope/vim-rake.git"
-NeoBundle "tpope/vim-bundler.git"
-NeoBundle "vim-ruby/vim-ruby.git"
-NeoBundle "Keithbsmiley/rspec.vim"
-NeoBundle "thoughtbot/vim-rspec"
+" NeoBundle "ecomba/vim-ruby-refactoring"
+" NeoBundle "tpope/vim-rails.git"
+" NeoBundle "tpope/vim-rake.git"
+" NeoBundle "tpope/vim-bundler.git"
+" NeoBundle "vim-ruby/vim-ruby.git"
+" NeoBundle "Keithbsmiley/rspec.vim"
+" NeoBundle "thoughtbot/vim-rspec"
 
 " Haskell
-NeoBundle "dag/vim2hs"
-NeoBundle "Twinside/vim-hoogle"
-NeoBundle "eagletmt/neco-ghc"
-"NeoBundle "eagletmt/ghcmod-vim"
-NeoBundle "bitc/hdevtools"
+" NeoBundle "dag/vim2hs"
+" NeoBundle "Twinside/vim-hoogle"
+" NeoBundle "eagletmt/neco-ghc"
+" NeoBundle "eagletmt/ghcmod-vim"
+" NeoBundle "bitc/hdevtools"
 
 " Clojure
 NeoBundle "kien/rainbow_parentheses.vim"
@@ -63,20 +63,20 @@ NeoBundle "tpope/vim-leiningen"
 NeoBundle "tpope/vim-classpath"
 
 " MONO!?!
-NeoBundle "fsharp/fsharpbinding", {
-          \ 'description': 'F# support for Vim',
-          \ 'rtp': 'vim',
-          \ 'lazy': 1,
-          \ 'autoload': {'filetypes': 'fsharp'},
-          \ 'build': {
-          \   'mac':   'make -C vim fsautocomplete',
-          \   'linux': 'make -C vim fsautocomplete',
-          \   'unix':  'make -C vim fsautocomplete',
-          \ },
-          \ 'build_commands': ['make', 'mozroots', 'xbuild'],
-          \}
-NeoBundle "OrangeT/vim-csharp"
-NeoBundle "nosami/Omnisharp"
+" NeoBundle "fsharp/fsharpbinding", {
+"           \ 'description': 'F# support for Vim',
+"           \ 'rtp': 'vim',
+"           \ 'lazy': 1,
+"           \ 'autoload': {'filetypes': 'fsharp'},
+"           \ 'build': {
+"           \   'mac':   'make -C vim fsautocomplete',
+"           \   'linux': 'make -C vim fsautocomplete',
+"           \   'unix':  'make -C vim fsautocomplete',
+"           \ },
+"           \ 'build_commands': ['make', 'mozroots', 'xbuild'],
+"           \}
+" NeoBundle "OrangeT/vim-csharp"
+" NeoBundle "nosami/Omnisharp"
 
 " Other languages
 NeoBundle "pangloss/vim-javascript"
@@ -133,7 +133,7 @@ NeoBundle "Keithbsmiley/investigate.vim"
 NeoBundle "altercation/vim-colors-solarized"
 NeoBundle "vivkin/flatland.vim"
 NeoBundle "w0ng/vim-hybrid"
-NeoBundle "endel/vim-github-colorscheme"
+" NeoBundle "endel/vim-github-colorscheme"
 " NeoBundle "croaky/vim-colors-github"
 NeoBundle "sjl/badwolf"
 " NeoBundle "nanotech/jellybeans.vim"
