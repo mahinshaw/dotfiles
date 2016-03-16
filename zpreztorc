@@ -42,6 +42,13 @@ zstyle ':prezto:load' pmodule \
   'prompt'
 
 #
+# Autosuggestions
+#
+
+# Set the query found color.
+# zstyle ':prezto:module:autosuggestions:color' found ''
+
+#
 # Editor
 #
 
@@ -98,7 +105,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # Ruby
 #
 
-# Auto switch the ruby version on directory change
+# Auto switch the Ruby version on directory change.
 zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 
 #
@@ -128,6 +135,7 @@ zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 #   'main' \
 #   'brackets' \
 #   'pattern' \
+#   'line' \
 #   'cursor' \
 #   'root'
 #
@@ -160,3 +168,5 @@ zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 # Auto start a session when Zsh is launched in a SSH connection.
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
+# Integrate with iTerm2.
+# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
