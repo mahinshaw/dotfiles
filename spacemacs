@@ -28,8 +28,7 @@ values."
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
-   ;; List of configuration layers to load. If it is the symbol `all' instead
-   ;; of a list then all discovered layers will be installed.
+   ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
      ;; ----------------------------------------------------------------
@@ -39,51 +38,66 @@ values."
      ;; ----------------------------------------------------------------
 
      ;; TOOLS
-     spacemacs-helm
+     helm
      spacemacs-layouts
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t)
      ;; Use evil-commentary instead of evil-nerd-commenter
+     colors
      evil-commentary
      evil-cleverparens
      fasd
      (git :variables
           git-magit-status-fullscreen t)
      github
+     nginx
      org
      restclient
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
-            shell-default-shell 'eshell)
+            shell-default-shell 'multi-term)
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil)
      syntax-checking
      version-control
      vinegar
 
      ;; LANGUAGES
      clojure
-     colors
      emacs-lisp
      erlang
      ;; elixir
      html
+     ;; idris
+     ;; java
      javascript
      markdown
+     ;; (scala :variables
+     ;;        enable-java-support t
+     ;;        java-enable-eldoc t
+     ;;        java-auto-start-ensime t)
      racket
-     ;; rust
+     rust
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
-   ;; A list of packages that will not be install and loaded.
+   ;; A list of packages that cannot be updated.
+   dotspacemacs-frozen-packages '()
+   ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
-   ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
-   ;; are declared in a layer which is not a member of
-   ;; the list `dotspacemacs-configuration-layers'. (default t)
-   dotspacemacs-delete-orphan-packages t))
+   ;; Defines the behaviour of Spacemacs when downloading packages.
+   ;; Possible values are `used', `used-but-keep-unused' and `all'. `used' will
+   ;; download only explicitly used packages and remove any unused packages as
+   ;; well as their dependencies. `used-but-keep-unused' will download only the
+   ;; used packages but won't delete them if they become unused. `all' will
+   ;; download all the packages regardless if they are used or not and packages
+   ;; won't be deleted by Spacemacs. (default is `used')
+   dotspacemacs-download-packages 'used))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -122,19 +136,21 @@ values."
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
    dotspacemacs-startup-banner 'official
-   ;; List of items to show in the startup buffer. If nil it is disabled.
-   ;; Possible values are: `recents' `bookmarks' `projects' `agenda' `todos'.
-   ;; (default '(recents projects))
-   dotspacemacs-startup-lists '(recents projects)
-   ;; Number of recent files to show in the startup buffer. Ignored if
-   ;; `dotspacemacs-startup-lists' doesn't include `recents'. (default 5)
-   dotspacemacs-startup-recent-list-size 5
+   ;; List of items to show in startup buffer or an association list of of
+   ;; the form `(list-type . list-size)`. If nil it is disabled.
+   ;; Possible values for list-type are:
+   ;; `recents' `bookmarks' `projects' `agenda' `todos'."
+   dotspacemacs-startup-lists '((recents . 5)
+                                (projects . 7))
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(flatland
+   dotspacemacs-themes '(darktooth
+                         material
+                         aurora
+                         flatland
                          spacemacs-dark
                          spacemacs-light
                          misterioso
@@ -145,8 +161,8 @@ values."
                          zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
-   ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
-   ;; size to make separators look not too crappy.
+   ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
+   ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
                                :size 14
                                :weight normal
@@ -175,6 +191,12 @@ values."
    dotspacemacs-distinguish-gui-tab nil
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
    dotspacemacs-remap-Y-to-y$ t
+   ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
+   ;; there. (default t)
+   dotspacemacs-retain-visual-state-on-shift t
+   ;; If non-nil, J and K move lines up and down when in visual mode.
+   ;; (default nil)
+   dotspacemacs-visual-line-move-text nil
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
@@ -252,6 +274,9 @@ values."
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
    dotspacemacs-line-numbers nil
+   ;; Code folding method. Possible values are `evil' and `origami'.
+   ;; (default 'evil)
+   dotspacemacs-folding-method 'evil
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode t
@@ -263,7 +288,7 @@ values."
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
-   ;; If non nil advises quit functions to keep server open when quitting.
+   ;; If non nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
    dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
@@ -299,9 +324,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
    evil-escape-key-sequence "jk"
    evil-want-C-i-jump t
 
+   ;; Projectile caching
+   projectile-enable-caching t
+
    ;; Flycheck
    flycheck-check-syntax-automatically '(save mode-enabled)
 
+   ;; ispell
+   ispell-program-name "/usr/local/bin/aspell"
    ;; time format
    display-time-string-forms '(dayname " " 12-hours ":" minutes " " am-pm))
 
@@ -331,8 +361,7 @@ you should place your code here."
     (define-key clj-refactor-map "/" nil)
     (evil-define-key 'insert clj-refactor-map (kbd "s-/") 'cljr-slash))
 
-  (setq powerline-default-separator 'zigzag
-        clojure-indent-style :always-indent)
+  (setq powerline-default-separator 'zigzag)
 
   ;; custom key-binding for evil mode.
   ;; the (kbd arg) allows binging from keyboard with control, meta, and shift operators.
@@ -354,6 +383,10 @@ you should place your code here."
   ;; swap 0 and ^ because getting to 0 is easier and first non blank is more useful.
   (define-key evil-normal-state-map "^" 'evil-beginning-of-line)
   (define-key evil-normal-state-map "0" 'evil-first-non-blank)
+
+  (defun connect-planck ()
+    (interactive)
+    (setq inf-clojure-program '("localhost" . 5555)))
 
   ;; OSX specific settings.
   (when (equal system-type 'darwin)

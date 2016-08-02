@@ -1,12 +1,14 @@
 " Use hybrid colorscheme and powerline fonts
 " https://github.com/w0ng/vim-hybrid
-if has("mac")
-  let g:hybrid_use_iTerm_colors = 1
-elseif has("linux")
-  let g:hybrid_use_Xresources = 1
-endif
-colorscheme hybrid
+" if has("mac")
+"   let g:hybrid_use_iTerm_colors = 1
+" elseif has("linux")
+"   let g:hybrid_use_Xresources = 1
+" endif
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1
 set background=dark
+colorscheme hybrid
 
 if has("gui_running")
   " colorscheme flatland

@@ -67,6 +67,9 @@ alias ...='../..'
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
+alias _gitignore_to_regex="(cat .gitignore 2> /dev/null || echo '') | sed 's/^\///' | tr '\n' '|'"
+alias trig='tree -I $(_gitignore_to_regex)'
+
 # aliases because I cannot type
 alias brwe='brew'
 
