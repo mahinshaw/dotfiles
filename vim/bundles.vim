@@ -50,6 +50,9 @@ NeoBundle "Shougo/neocomplete.vim"
 " NeoBundle "eagletmt/ghcmod-vim"
 " NeoBundle "bitc/hdevtools"
 
+" Rust
+NeoBundle "rust-lang/rust.vim"
+
 " Clojure
 NeoBundle "kien/rainbow_parentheses.vim"
 " NeoBundle "amdt/vim-niji"
