@@ -5,6 +5,8 @@ Project_Notes.*
 # Emacs #
 #########
 *.#*
+.dir-locals.el
+.meghanada
 
 # Compiled source #
 ###################

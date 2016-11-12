@@ -65,6 +65,8 @@ values."
      vinegar
 
      ;; LANGUAGES
+     ;; asciidoc
+     csharp
      clojure
      emacs-lisp
      erlang
@@ -78,14 +80,16 @@ values."
      ;;        enable-java-support t
      ;;        java-enable-eldoc t
      ;;        java-auto-start-ensime t)
-     racket
+     ;; racket
      rust
+     sql
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(sicp)
+   dotspacemacs-additional-packages '(sicp inf-clojure meghanada groovy-mode gradle-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -180,6 +184,11 @@ values."
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
+   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
+   ;; (default "SPC")
+   dotspacemacs-emacs-command-key "SPC"
+   ;; The key used for Vim Ex commands (default ":")
+   dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
    dotspacemacs-emacs-leader-key "M-m"
@@ -187,11 +196,8 @@ values."
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m)
+   ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
-   ;; (default "SPC")
-   dotspacemacs-emacs-command-key "SPC"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -253,6 +259,12 @@ values."
    ;; right; if there is insufficient space it displays it at the bottom.
    ;; (default 'bottom)
    dotspacemacs-which-key-position 'bottom
+   ;; Control where `switch-to-buffer' displays the buffer. If nil,
+   ;; `switch-to-buffer' displays the buffer in the current window even if
+   ;; another same-purpose window is available. If non nil, `switch-to-buffer'
+   ;; displays the buffer in a same-purpose window even if the buffer can be
+   ;; displayed in the current window. (default nil)
+   dotspacemacs-switch-to-buffer-prefers-purpose nil
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil to boost the loading time. (default t)
@@ -307,9 +319,9 @@ values."
    ;; (default nil)
    dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
-   ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
+   ;; (default '("rg" "ag" "pt" "ack" "grep"))
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -360,8 +372,21 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; persistence with desktop mode.
+  ;; (desktop-save-mode t)
+  ;; (desktop-read)
+
+  ;; Environment Variables please
+  (exec-path-from-shell-copy-envs '("PERL5LIB"
+                                    "PERL_LOCAL_LIB_ROOT"
+                                    "PERL_MB_OPT"
+                                    "PERL_MM_OPT"
+                                    "JAVA_HOME"
+                                    "GOPATH"
+                                    "NVM_DIR"))
+
   ;; clojure hook-ups
-  (dolist (m '(clojure-mode clojurec-mode clojurescript-mode clojurex-mode cider-mode-hook cider-repl-mode-hook))
+  (dolist (m '(clojure-mode-hook cider-mode-hook cider-repl-mode-hook))
     (progn
       ;; For docstrings, I want to be able to use `...`
       (sp-local-pair m "`" "`")
@@ -376,7 +401,27 @@ you should place your code here."
     (define-key clj-refactor-map "/" nil)
     (evil-define-key 'insert clj-refactor-map (kbd "s-/") 'cljr-slash))
 
-  (setq powerline-default-separator 'zigzag)
+  (setq powerline-default-separator 'zigzag
+        eclim-eclipse-dirs "/Applications/Eclipse.app/Contents/Eclipse"
+        eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim")
+
+  ;; csharp
+  (setq-default omnisharp-server-executable-path "/Users/Mark/workspace/csharp/omnisharp-roslyn/artifacts/publish/OmniSharp/default/netcoreapp1.0/OmniSharp")
+
+  ;; java
+  (require 'meghanada)
+  (add-hook 'java-mode-hook
+             (lambda ()
+               (meghanada-mode t)
+               (gradle-mode t)
+               (add-hook 'before-save-hook 'delete-trailing-whitespace)))
+  (add-hook 'groovy-mode-hook
+            (lambda ()
+              (gradle-mode t)))
+
+  (with-eval-after-load 'sql
+    ;; sql-mode pretty much requires your psql to be uncustomized.
+    (push "--no-psqlrc" sql-postgres-options))
 
   ;; custom key-binding for evil mode.
   ;; the (kbd arg) allows binging from keyboard with control, meta, and shift operators.
