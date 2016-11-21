@@ -33,7 +33,6 @@ Project_Notes.*
 # Logs and databases #
 ######################
 *.log
-*.sql
 *.sqlite
 
 # OS generated files #
