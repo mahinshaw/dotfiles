@@ -19,6 +19,9 @@ fi
 #   chruby $(cat ~/.ruby-version)
 # fi
 
+# completions in home dir
+fpath+="Users/Mark/.zfunc"
+
 # fasd for fast file searching
 # only init if installed.
 fasd_cache="$HOME/.fasd-init-bash"
@@ -27,6 +30,12 @@ if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
 fi
 source "$fasd_cache"
 unset fasd_cache
+
+# use direnv https://direnv.net/
+eval "$(direnv hook zsh)"
+
+# init opam env
+eval `opam config env`
 
 # ================ALIASES===================
 # use macvim in the terminal if it exits

@@ -31,10 +31,10 @@ fi
 # local tools
 export PATH=$PATH:/Users/Mark/bin
 export PATH=$PATH:/Users/Mark/.cargo/bin
-export RUST_SRC_PATH=/usr/local/src/rust/src
+export RUST_SRC_PATH=/Users/Mark/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust
 export MANPATH=:/usr/local/opt/erlang/man
-export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/workspace/go:$HOME/workspace/go/work
+export PATH=$PATH:$HOME/workspace/go/bin
 
 #Navis Related
 export PATH=$PATH:/Users/Mark/projects/team/scripts
@@ -47,4 +47,10 @@ export PERL_MB_OPT="--install_base \"/Users/Mark/perl5\"";
 export PERL_MM_OPT="INSTALL_BASE=/Users/Mark/perl5";
 
 # .Net and mono
-export MONO_GAC_PREFIX="/usr/local"
+export MONO_GAC_PREFIX="/usr/local";
+
+# Postgres
+export PGDATA="/usr/local/var/postgres";
+
+# OPAM configuration
+. /Users/Mark/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true;

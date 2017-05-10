@@ -33,8 +33,8 @@ values."
    '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
+     ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
+     ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
 
      ;; TOOLS
@@ -45,6 +45,7 @@ values."
                       auto-completion-enable-sort-by-usage t)
      ;; Use evil-commentary instead of evil-nerd-commenter
      colors
+     docker
      evil-commentary
      evil-cleverparens
      fasd
@@ -55,9 +56,9 @@ values."
      org
      restclient
      (shell :variables
+            shell-default-shell 'multi-term
             shell-default-height 30
-            shell-default-position 'bottom
-            shell-default-shell 'multi-term)
+            shell-default-position 'bottom)
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      syntax-checking
@@ -69,20 +70,31 @@ values."
      csharp
      clojure
      emacs-lisp
-     erlang
+     ;; erlang
      ;; elixir
+     ;; (go :variables
+     ;;     go-use-gometalinter t
+     ;;     gofmt-cmmand "goimports"
+     ;;     go-tab-width 4)
      html
      ;; idris
-     ;; java
+     (java :variables java-backend 'meghanada)
      javascript
      markdown
+     ;; meghanada
+     ocaml
      ;; (scala :variables
      ;;        enable-java-support t
      ;;        java-enable-eldoc t
      ;;        java-auto-start-ensime t)
      ;; racket
-     rust
-     scheme
+     (ruby :variables
+           ruby-test-runner 'minitest
+           ruby-enable-enh-ruby-mode t
+           ruby-version-manager 'chruby)
+     ruby-on-rails
+     ;; rust
+     ;; scheme
      sql
      yaml
      )
@@ -90,7 +102,11 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(sicp inf-clojure meghanada groovy-mode gradle-mode)
+   dotspacemacs-additional-packages '(
+                                      direnv
+                                      inf-clojure
+                                      sicp
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -160,19 +176,18 @@ values."
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
-   ;; Press <SPC> T n to cycle to the next theme in the list (works great
+   ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(darktooth
-                         material
-                         aurora
+                         ;; nord
+                         ;; gruvbox
+                         ;; material
                          flatland
-                         spacemacs-dark
-                         spacemacs-light
                          misterioso
-                         solarized-light
                          solarized-dark
-                         leuven
+                         solarized-light
                          monokai
+                         leuven
                          zenburn)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -185,7 +200,7 @@ values."
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
-   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
+   ;; The key used for Emacs commands `M-x' (after pressing on the leader key).
    ;; (default "SPC")
    dotspacemacs-emacs-command-key "SPC"
    ;; The key used for Vim Ex commands (default ":")
@@ -200,9 +215,9 @@ values."
    ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    ;; These variables control whether separate commands are bound in the GUI to
-   ;; the key pairs C-i, TAB and C-m, RET.
-   ;; Setting it to a non-nil value, allows for separate commands under <C-i>
-   ;; and TAB or <C-m> and RET.
+   ;; the key pairs `C-i', `TAB' and `C-m', `RET'.
+   ;; Setting it to a non-nil value, allows for separate commands under `C-i'
+   ;; and TAB or `C-m' and `RET'.
    ;; In the terminal, these pairs are generally indistinguishable, so this only
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab nil
@@ -211,7 +226,7 @@ values."
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
    ;; there. (default t)
    dotspacemacs-retain-visual-state-on-shift t
-   ;; If non-nil, J and K move lines up and down when in visual mode.
+   ;; If non-nil, `J' and `K' move lines up and down when in visual mode.
    ;; (default nil)
    dotspacemacs-visual-line-move-text nil
    ;; If non-nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
@@ -222,7 +237,7 @@ values."
    ;; If non-nil the default layout name is displayed in the mode-line.
    ;; (default nil)
    dotspacemacs-display-default-layout t
-   ;; If non-nil then the last auto saved layouts are resume automatically upon
+   ;; If non-nil then the last auto saved layouts are resumed automatically upon
    ;; start. (default nil)
    dotspacemacs-auto-resume-layouts nil
    ;; Size (in MB) above which spacemacs will prompt to open the large file
@@ -249,7 +264,7 @@ values."
    ;; source settings. Else, disable fuzzy matching in all sources.
    ;; (default 'always)
    dotspacemacs-helm-use-fuzzy 'always
-   ;; If non-nil the paste micro-state is enabled. When enabled pressing `p`
+   ;; If non-nil the paste micro-state is enabled. When enabled pressing `p'
    ;; several times cycle between the kill ring content. (default nil)
    dotspacemacs-enable-paste-transient-state nil
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
@@ -298,14 +313,24 @@ values."
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
-   ;; If non-nil line numbers are turned on in all `prog-mode' and `text-mode'
-   ;; derivatives. If set to `relative', also turns on relative line numbers.
+   ;; Control line numbers activation.
+   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
+   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
+   ;; This variable can also be set to a property list for finer control:
+   ;; '(:relative nil
+   ;;   :disabled-for-modes dired-mode
+   ;;                       doc-view-mode
+   ;;                       markdown-mode
+   ;;                       org-mode
+   ;;                       pdf-view-mode
+   ;;                       text-mode
+   ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
-   ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
+   ;; If non-nil `smartparens-strict-mode' will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode t
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
@@ -327,12 +352,35 @@ values."
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil
+   ;; Format specification for setting the frame title.
+   ;; %a - the `abbreviated-file-name', or `buffer-name'
+   ;; %t - `projectile-project-name'
+   ;; %I - `invocation-name'
+   ;; %S - `system-name'
+   ;; %U - contents of $USER
+   ;; %b - buffer name
+   ;; %f - visited file name
+   ;; %F - frame name
+   ;; %s - process status
+   ;; %p - percent of buffer above top of window, or Top, Bot or All
+   ;; %P - percent of buffer above bottom of window, perhaps plus Top, or Bot or All
+   ;; %m - mode name
+   ;; %n - Narrow if appropriate
+   ;; %z - mnemonics of buffer, terminal, and keyboard coding systems
+   ;; %Z - like %z, but including the end-of-line format
+   dotspacemacs-frame-title-format "%I@%S"
+   ;; Format specification for setting the icon title format
+   ;; (default nil - same as frame-title-format)
+   dotspacemacs-icon-title-format nil
    ;; Delete whitespace while saving buffer. Possible values are `all'
    ;; to aggressively delete empty line and long sequences of whitespace,
-   ;; `trailing' to delete only the whitespace at end of lines, `changed'to
+   ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
+   ;; Either nil or a number of seconds. If non-nil zone out after the specified
+   ;; number of seconds. (default nil)
+   dotspacemacs-zone-out-when-idle nil
    ))
 
 (defun dotspacemacs/user-init ()
@@ -347,6 +395,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (global-set-key (kbd "C-r") 'isearch-backward-regexp)
   (global-set-key (kbd "C-M-s") 'isearch-forward)
   (global-set-key (kbd "C-M-r") 'isearch-backward)
+
   (setq-default
    ;; Escape out of "everything with 'jk'"
    evil-escape-key-sequence "jk"
@@ -386,6 +435,10 @@ you should place your code here."
                                     "GOPATH"
                                     "NVM_DIR"))
 
+  ;; direnv hookups
+  (require 'direnv)
+  (direnv-mode)
+
   ;; clojure hook-ups
   (dolist (m '(clojure-mode-hook cider-mode-hook cider-repl-mode-hook))
     (progn
@@ -394,40 +447,174 @@ you should place your code here."
       ;; Trying out cleverparens
       (add-hook m #'evil-cleverparens-mode)))
 
-
-  ;; elisp
-  (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
-
   (with-eval-after-load 'clojure-mode
     (define-clojure-indent
       (defui '(:defn nil nil (:defn)))
       (specification :defn)
       (behavior :defn)
+      (component :defn)
+      (provided :defn)
       (assertions 0)
       (when-mocking 0)
-      (provided :defn)))
+      (a :defn)
+      (abbr :defn)
+      (address :defn)
+      (area :defn)
+      (article :defn)
+      (aside :defn)
+      (audio :defn)
+      (b :defn)
+      (base :defn)
+      (bdi :defn)
+      (bdo :defn)
+      (big :defn)
+      (blockquote :defn)
+      (body :defn)
+      (br :defn)
+      (button :defn)
+      (canvas :defn)
+      (caption :defn)
+      (cite :defn)
+      (code :defn)
+      (col :defn)
+      (colgroup :defn)
+      (data :defn)
+      (datalist :defn)
+      (dd :defn)
+      (del :defn)
+      (details :defn)
+      (dfn :defn)
+      (dialog :defn)
+      (div :defn)
+      (dl :defn)
+      (dt :defn)
+      (em :defn)
+      (embed :defn)
+      (fieldset :defn)
+      (figcaption :defn)
+      (figure :defn)
+      (footer :defn)
+      (form :defn)
+      (h1 :defn)
+      (h2 :defn)
+      (h3 :defn)
+      (h4 :defn)
+      (h5 :defn)
+      (h6 :defn)
+      (head :defn)
+      (header :defn)
+      (hr :defn)
+      (html :defn)
+      (i :defn)
+      (iframe :defn)
+      (img :defn)
+      (ins :defn)
+      (kbd :defn)
+      (keygen :defn)
+      (label :defn)
+      (legend :defn)
+      (li :defn)
+      (link :defn)
+      (main :defn)
+      (map :defn)
+      (mark :defn)
+      (menu :defn)
+      (menuitem :defn)
+      (meta :defn)
+      (meter :defn)
+      (nav :defn)
+      (noscript :defn)
+      (object :defn)
+      (ol :defn)
+      (optgroup :defn)
+      (output :defn)
+      (p :defn)
+      (param :defn)
+      (picture :defn)
+      (pre :defn)
+      (progress :defn)
+      (q :defn)
+      (rp :defn)
+      (rt :defn)
+      (ruby :defn)
+      (s :defn)
+      (samp :defn)
+      (script :defn)
+      (section :defn)
+      (small :defn)
+      (source :defn)
+      (span :defn)
+      (strong :defn)
+      (style :defn)
+      (sub :defn)
+      (summary :defn)
+      (sup :defn)
+      (table :defn)
+      (tbody :defn)
+      (td :defn)
+      (tfoot :defn)
+      (th :defn)
+      (thead :defn)
+      (time :defn)
+      (title :defn)
+      (tr :defn)
+      (track :defn)
+      (u :defn)
+      (ul :defn)
+      (var :defn)
+      (video :defn)
+      (wbr :defn)
+
+      ;; svg
+      (circle :defn)
+      (clipPath :defn)
+      (ellipse :defn)
+      (g :defn)
+      (line :defn)
+      (mask :defn)
+      (path :defn)
+      (pattern :defn)
+      (polyline :defn)
+      (rect :defn)
+      (svg :defn)
+      (text :defn)
+      (defs :defn)
+      (linearGradient :defn)
+      (polygon :defn)
+      (radialGradient :defn)
+      (stop :defn)
+      (tspan :defn)
+ ))
 
   (with-eval-after-load 'clj-refactor
     (define-key clj-refactor-map "/" nil)
     (evil-define-key 'insert clj-refactor-map (kbd "s-/") 'cljr-slash))
 
-  (setq powerline-default-separator 'zigzag
-        eclim-eclipse-dirs "/Applications/Eclipse.app/Contents/Eclipse"
-        eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim")
+  (require 'ob-clojure)
+  (setq org-babel-clojure-backend 'cider)
+
+  ;; elisp
+  (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
+
+  (setq powerline-default-separator 'nil
+        eclim-eclipse-dirs  "/Users/Mark/eclipse/java-neon/Eclipse.app/Contents/Eclipse"
+        eclim-executable  "/Users/Mark/eclipse/java-neon/Eclipse.app/Contents/Eclipse/eclim")
 
   ;; csharp
-  (setq-default omnisharp-server-executable-path "/Users/Mark/workspace/csharp/omnisharp-roslyn/artifacts/publish/OmniSharp/default/netcoreapp1.0/OmniSharp")
+  (setq-default omnisharp-server-executable-path "/Users/Mark/workspace/csharp/omnisharp-roslyn/artifacts/publish/OmniSharp/default/netcoreapp1.1/OmniSharp")
+  ;; (setq omnisharp-use-http t)
 
   ;; java
-  (require 'meghanada)
-  (add-hook 'java-mode-hook
-             (lambda ()
-               (meghanada-mode t)
-               (gradle-mode t)
-               (add-hook 'before-save-hook 'delete-trailing-whitespace)))
-  (add-hook 'groovy-mode-hook
-            (lambda ()
-              (gradle-mode t)))
+  ;; (require 'meghanada)
+  ;; (add-hook 'java-mode-hook
+  ;;            (lambda ()
+  ;;              (meghanada-mode t)
+  ;;              (flycheck-mode t)
+  ;;              (gradle-mode t)
+  ;;              (add-hook 'before-save-hook 'delete-trailing-whitespace)))
+  ;; (add-hook 'groovy-mode-hook
+  ;;           (lambda ()
+  ;;             (gradle-mode t)))
 
   (with-eval-after-load 'sql
     ;; sql-mode pretty much requires your psql to be uncustomized.
@@ -517,3 +704,63 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (helm-flyspell company-racer align-cljlet seq geiser omnisharp csharp-mode groovy-mode gradle-mode meghanada restclient-helm ob-restclient company-restclient know-your-http-well edbi epc ctable concurrent deferred sql-indent hide-comnt helm-purpose window-purpose imenu-list pug-mode adoc-mode markup-faces dumb-jump yaml-mode cargo ht org sicp toml-mode racer rust-mode flycheck-rust srefactor idris-mode prop-menu helm-gtags ggtags emoji-cheat-sheet-plus company-emoji marshal evil-unimpaired org-projectile github-search nginx-mode vimrc-mode dactyl-mode noflet ensime sbt-mode scala-mode inf-clojure log4e gntp parent-mode request haml-mode gitignore-mode fringe-helper git-gutter+ logito pcache flx grizzl with-editor goto-chg undo-tree diminish web-completion-data pos-tip inflections edn peg eval-sexp-fu spinner queue pkg-info epl bind-key auto-complete package-build gh highlight paredit emacs-eclim jdee anzu flyspell-correct-helm flyspell-correct auto-dictionary color-identifiers-mode skewer-mode simple-httpd json-snatcher json-reformat dash-functional tern popup rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake f chruby bundler inf-ruby packed git-gutter git-commit nlinum-relative nlinum company iedit multiple-cursors magit-popup hydra smartparens bind-map projectile s evil alert markdown-mode powerline helm helm-core wgrep smex counsel swiper ivy avy yasnippet js2-mode dash cider clojure-mode flycheck magit async racket-mode faceup xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode restclient restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file ob-http neotree multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode linum-relative link-hint leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-pos-tip flx-ido flatland-theme fill-column-indicator fasd fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elisp-slime-nav diff-hl define-word company-web company-tern company-statistics company-quickhelp column-enforce-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(safe-local-variable-values
+   (quote
+    ((eval setenv "JVM_OPTS" "-Ddev -Ddbdir=/usr/local/var/postgres")
+     (cider-boot-parameters . "cider repl -s wait")
+     (cider-boot-parameters . "cider repls -s wait")
+     (cider-cljs-lein-repl . "(start-figwheel [\"test\" \"tutorial\"])")
+     (clojure-indent-style . :always-align)
+     (clojure-indent-style . :always-indent)
+     (cider-cljs-lein-repl . "(start-figwheel)")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol t)
+ '(package-selected-packages
+   (quote
+    (solarized-theme projectile-rails feature-mode string-inflection symon nord-theme shut-up browse-at-remote groovy-imports company-emacs-eclim eclim monokai-theme direnv utop tuareg caml ocp-indent merlin go-eldoc magithub minitest enh-ruby-mode go-mode fuzzy darktooth-theme autothemer zenburn-theme ivy-purpose ivy-hydra flyspell-correct-ivy counsel-projectile winum go-guru flycheck-gometalinter dockerfile-mode docker tablist docker-tramp aurora-theme esup seq geiser omnisharp csharp-mode groovy-mode gradle-mode meghanada restclient-helm ob-restclient company-restclient know-your-http-well edbi epc ctable concurrent deferred sql-indent hide-comnt helm-purpose window-purpose imenu-list pug-mode adoc-mode markup-faces dumb-jump yaml-mode cargo ht org sicp toml-mode racer rust-mode flycheck-rust srefactor idris-mode prop-menu helm-gtags ggtags emoji-cheat-sheet-plus company-emoji marshal evil-unimpaired org-projectile github-search nginx-mode vimrc-mode dactyl-mode noflet ensime sbt-mode scala-mode inf-clojure log4e gntp parent-mode request haml-mode gitignore-mode fringe-helper git-gutter+ logito pcache flx grizzl with-editor goto-chg undo-tree diminish web-completion-data pos-tip inflections edn peg eval-sexp-fu spinner queue pkg-info epl bind-key auto-complete package-build gh highlight paredit emacs-eclim jdee anzu flyspell-correct-helm flyspell-correct auto-dictionary color-identifiers-mode skewer-mode simple-httpd json-snatcher json-reformat dash-functional tern popup rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake f chruby bundler inf-ruby packed git-gutter git-commit nlinum-relative nlinum company iedit multiple-cursors magit-popup hydra smartparens bind-map projectile s evil alert markdown-mode powerline helm helm-core wgrep smex counsel swiper ivy avy yasnippet js2-mode dash cider clojure-mode flycheck magit async racket-mode faceup xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode restclient restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file ob-http neotree multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode linum-relative link-hint leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-pos-tip flx-ido flatland-theme fill-column-indicator fasd fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elisp-slime-nav diff-hl define-word company-web company-tern company-statistics company-quickhelp column-enforce-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(safe-local-variable-values
+   (quote
+    ((cider-cljs-lein-repl . "(start-figwheel [\"dev\" \"cards\"])")
+     (cider-cljs-lein-repl . "(start-figwheel [\"dev\"])")
+     (cider-cljs-lein-repl . "(start-figwheel [\"dev\" \"test\"])")
+     (eval setq cider-cljs-lein-repl "(start-figwheel)")
+     (eval setenv "JVM_OPTS" "-Ddev -Ddbdir=/usr/local/var/postgres")
+     (cider-boot-parameters . "cider repl -s wait")
+     (cider-boot-parameters . "cider repls -s wait")
+     (cider-cljs-lein-repl . "(start-figwheel [\"test\" \"tutorial\"])")
+     (clojure-indent-style . :always-align)
+     (clojure-indent-style . :always-indent)
+     (cider-cljs-lein-repl . "(start-figwheel)")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#FDF4C1" :background "#282828"))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+)
