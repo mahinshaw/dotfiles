@@ -7,4 +7,5 @@ if [ ! -d ~/.vim/bundle ]; then
 fi
 
 # Have Neobundle install all plugins
-vim +NeoBundleInstall +qall
+vim +NeoBundleInstall +qall -
+# reset -Q
