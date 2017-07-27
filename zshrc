@@ -98,3 +98,9 @@ alias brwe='brew'
 
 # Mono
 alias fsi='fsharpi --nologo --consolecolors'
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_OPTS='--inline-info'

@@ -1,2 +1,8 @@
-" This file is currently a placeholder for future endevours.
-" TODO - add script to install prezto.  Although it may not be necessary, it may be a good learning test.
+#!/bin/sh
+
+# This file is currently a placeholder for future endevours.
+
+# Install prezto
+if [ ! -d ~/.zprezto ]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+fi

@@ -161,7 +161,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
-   ;; `recents' `bookmarks' `projects' `agenda' `todos'."
+   ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 5)
@@ -262,8 +262,8 @@ It should only modify the values of Spacemacs settings."
    ;; source settings. Else, disable fuzzy matching in all sources.
    ;; (default 'always)
    dotspacemacs-helm-use-fuzzy 'always
-   ;; If non-nil the paste micro-state is enabled. When enabled pressing `p'
-   ;; several times cycle between the kill ring content. (default nil)
+   ;; If non-nil, the paste transient-state is enabled. And pressing `p' several
+   ;; times, cycles through the elements in the `kill-ring'. (default nil)
    dotspacemacs-enable-paste-transient-state nil
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
@@ -379,6 +379,10 @@ It should only modify the values of Spacemacs settings."
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
    dotspacemacs-zone-out-when-idle nil
+   ;; Run `spacemacs/prettify-org-buffer' when
+   ;; visiting README.org files of Spacemacs.
+   ;; (default nil)
+   dotspacemacs-pretty-docs nil
    ))
 
 (defun dotspacemacs/user-init ()
@@ -406,6 +410,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
    ;; ispell
    ispell-program-name "/usr/local/bin/aspell"
+
+   ;; node modules
+   node-add-modules-path t
+
    ;; time format
    display-time-string-forms '(dayname " " 12-hours ":" minutes " " am-pm))
 
@@ -523,6 +531,7 @@ before packages are loaded."
       (object :defn)
       (ol :defn)
       (optgroup :defn)
+      (option :defn)
       (output :defn)
       (p :defn)
       (param :defn)
@@ -537,6 +546,7 @@ before packages are loaded."
       (samp :defn)
       (script :defn)
       (section :defn)
+      (select :defn)
       (small :defn)
       (source :defn)
       (span :defn)
