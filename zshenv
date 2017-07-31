@@ -31,7 +31,7 @@ fi
 # local tools
 export PATH=$PATH:/Users/Mark/bin
 export PATH=$PATH:/Users/Mark/.cargo/bin
-export RUST_SRC_PATH=/Users/Mark/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export MANPATH=:/usr/local/opt/erlang/man
 export GOPATH=$HOME/workspace/go:$HOME/workspace/go/work
 export PATH=$PATH:$HOME/workspace/go/bin

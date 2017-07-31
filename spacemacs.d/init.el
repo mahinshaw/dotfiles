@@ -75,12 +75,14 @@ This function should only modify configuration layer settings."
      ;;     go-use-gometalinter t
      ;;     gofmt-cmmand "goimports"
      ;;     go-tab-width 4)
+     fsharp
      html
      ;; idris
      (java :variables java-backend 'meghanada)
      ;; javascript
      markdown
      ocaml
+     php
      ;; racket
      ;; react
      rjsx
@@ -89,9 +91,10 @@ This function should only modify configuration layer settings."
            ruby-enable-enh-ruby-mode t
            ruby-version-manager 'chruby)
      ruby-on-rails
-     ;; rust
+     rust
      ;; scheme
      sql
+     vagrant
      yaml
      )
    ;; List of additional packages that will be installed without being

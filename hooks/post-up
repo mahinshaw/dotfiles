@@ -8,3 +8,10 @@ fi
 
 # Have vim-plug install all plugins
 vim +PlugInstall +qall -
+
+# Install spacemacs to .emacs.d
+if [ ! -d ~/.emacs.d ]; then
+  git clone https://github.com/mahinshaw/spacemacs.git ~/.emacs.d
+  cd .emacs.d && git checkout develop && git remote add checkversion https://github.com/syl20bnr/spacemacs.git
+  cd ~/
+fi
