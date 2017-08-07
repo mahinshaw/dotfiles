@@ -50,7 +50,8 @@ This function should only modify configuration layer settings."
      fasd
      (git :variables
           git-magit-status-fullscreen t)
-     github
+     ;; If you are not using github, this layer will hose you.
+     ;; github
      nginx
      org
      restclient
@@ -523,7 +524,8 @@ before packages are loaded."
       (li :defn)
       (link :defn)
       (main :defn)
-      (map :defn)
+      ;; there is a map tag ... really
+      ;; (map :defn)
       (mark :defn)
       (menu :defn)
       (menuitem :defn)
