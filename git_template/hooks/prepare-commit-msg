@@ -1,4 +1,8 @@
 #!/bin/sh
 
 BRANCHNAME=$(git rev-parse --abbrev-ref HEAD)
-echo -e "$BRANCHNAME\n"$(cat "$1")>"$1"
+# echo "$BRANCHNAME: $(cat "$1")">"$1"
+if [ -n "$BRANCHNAME" ] && [ "$BRANCHNAME" != "master" ] && [ "$BRANCHNAME" != "develop" ]; then
+  # sed -i.bak -e "1s~^~$BRANCHNAME: ~" $1
+  sed -i.bak -e "1s~^$~$BRANCHNAME: \\n~" $1
+fi

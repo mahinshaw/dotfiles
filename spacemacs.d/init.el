@@ -62,6 +62,7 @@ This function should only modify configuration layer settings."
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      syntax-checking
+     vagrant
      version-control
      vinegar
 
@@ -72,30 +73,30 @@ This function should only modify configuration layer settings."
      emacs-lisp
      ;; erlang
      ;; elixir
+     fsharp
      ;; (go :variables
      ;;     go-use-gometalinter t
      ;;     gofmt-cmmand "goimports"
      ;;     go-tab-width 4)
-     fsharp
+     groovy
      html
      ;; idris
      (java :variables java-backend 'meghanada)
-     ;; javascript
+     javascript
      markdown
      ocaml
-     php
+     ;; php
      ;; racket
      ;; react
-     rjsx
-     (ruby :variables
-           ruby-test-runner 'minitest
-           ruby-enable-enh-ruby-mode t
-           ruby-version-manager 'chruby)
-     ruby-on-rails
+     ;; rjsx
+     ;; (ruby :variables
+     ;;       ruby-test-runner 'minitest
+     ;;       ruby-enable-enh-ruby-mode t
+     ;;       ruby-version-manager 'chruby)
+     ;; ruby-on-rails
      rust
      ;; scheme
      sql
-     vagrant
      yaml
      )
    ;; List of additional packages that will be installed without being
@@ -199,7 +200,7 @@ It should only modify the values of Spacemacs settings."
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
-   ;; The leader key
+   ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands `M-x' (after pressing on the leader key).
    ;; (default "SPC")
@@ -618,6 +619,13 @@ before packages are loaded."
   ;; csharp
   (setq-default omnisharp-server-executable-path "/Users/Mark/workspace/csharp/omnisharp-roslyn/artifacts/publish/OmniSharp/default/netcoreapp1.1/OmniSharp")
   ;; (setq omnisharp-use-http t)
+
+  ;; HTML
+  (defun my-web-mode-hook ()
+    "Hooks for web-mode."
+    (setq web-mode-markup-indent-offset 4))
+  (add-to-list 'auto-mode-alist '("\\.shtml\\'" . web-mode))
+  (add-hook 'web-mode-hook 'my-web-mode-hook)
 
   ;; JAVASCRIPT REACT
   (setq-default

@@ -89,3 +89,8 @@ cabal-dev
 .cabal-sandbox/
 cabal.sandbox.config
 cabal.config
+
+# Javascript
+# ----------------------------------------------------------------------------------------------
+.tern-config
+.tern-project

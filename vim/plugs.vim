@@ -20,6 +20,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'vim-ruby/vim-ruby'
 " Plug 'Keithbsmiley/rspec.vim'
 " Plug 'thoughtbot/vim-rspec'
+" Plug 'slim-template/vim-slim'
+" Plug 'tpope/vim-haml'
 
 " Haskell
 " Plug 'dag/vim2hs'
@@ -67,8 +69,6 @@ Plug 'othree/javascript-libraries-syntax.vim'
 " Html, Xml, Css, Markdown...
 Plug 'groenewege/vim-less'
 Plug 'kchmck/vim-coffee-script'
-Plug 'slim-template/vim-slim'
-Plug 'tpope/vim-haml'
 Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'suan/vim-instant-markdown'

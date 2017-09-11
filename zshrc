@@ -93,9 +93,6 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 alias _gitignore_to_regex="(cat .gitignore 2> /dev/null || echo '') | sed 's/^\///' | tr '\n' '|'"
 alias trig='tree -I $(_gitignore_to_regex)'
 
-# aliases because I cannot type
-alias brwe='brew'
-
 # Mono
 alias fsi='fsharpi --nologo --consolecolors'
 
