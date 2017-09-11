@@ -1,0 +1,4 @@
+#!/bin/sh
+
+BRANCHNAME=$(git rev-parse --abbrev-ref HEAD)
+echo -e "$BRANCHNAME\n"$(cat "$1")>"$1"

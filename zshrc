@@ -20,7 +20,7 @@ fi
 # fi
 
 # completions in home dir
-fpath+="Users/Mark/.zfunc"
+fpath+="$HOME/.zfunc"
 
 # fasd for fast file searching
 # only init if installed.
@@ -44,7 +44,7 @@ RUBIES+=(
   /opt/chefdk/embedded
 )
 # add chef ruby gems to path
-export PATH=$PATH:/Users/Mark/.chefdk/gem/ruby/2.3.0/bin
+export PATH=$PATH:$HOME/.chefdk/gem/ruby/2.3.0/bin
 
 # ================ALIASES===================
 # use macvim in the terminal if it exits

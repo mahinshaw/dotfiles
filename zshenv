@@ -29,22 +29,22 @@ else
 fi
 
 # local tools
-export PATH=$PATH:/Users/Mark/bin
-export PATH=$PATH:/Users/Mark/.cargo/bin
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export MANPATH=:/usr/local/opt/erlang/man
 export GOPATH=$HOME/workspace/go:$HOME/workspace/go/work
 export PATH=$PATH:$HOME/workspace/go/bin
 
 #Navis Related
-export PATH=$PATH:/Users/Mark/projects/team/scripts
+export PATH=$PATH:$HOME/projects/team/scripts
 
 # Perl things
-export PATH="/Users/Mark/perl5/bin${PATH:+:${PATH}}";
-export PERL5LIB="/Users/Mark/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}";
-export PERL_LOCAL_LIB_ROOT="/Users/Mark/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}";
-export PERL_MB_OPT="--install_base \"/Users/Mark/perl5\"";
-export PERL_MM_OPT="INSTALL_BASE=/Users/Mark/perl5";
+export PATH="$HOME/perl5/bin${PATH:+:${PATH}}";
+export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}";
+export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}";
+export PERL_MB_OPT="--install_base \"$HOME/perl5\"";
+export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
 
 # .Net and mono
 export MONO_GAC_PREFIX="/usr/local";
@@ -53,4 +53,4 @@ export MONO_GAC_PREFIX="/usr/local";
 export PGDATA="/usr/local/var/postgres";
 
 # OPAM configuration
-. /Users/Mark/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true;
+. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true;
