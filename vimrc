@@ -147,10 +147,12 @@ noremap! jk <ESC>
 " Now using the middle finger of either hand you can type
 " underscores with apple-k or apple-d, and add Shift
 " to type dashes
-imap <silent> <D-k> _
-imap <silent> <D-d> _
-imap <silent> <D-K> -
-imap <silent> <D-D> -
+if has('gui_running')
+  imap <silent> <D-k> _
+  imap <silent> <D-d> _
+  imap <silent> <D-K> -
+  imap <silent> <D-D> -
+endif
 
 " <Leader># Surround a word with #{ruby interpolation}
 map <Leader># ysiw#
@@ -205,14 +207,16 @@ nmap <silent> <Leader>qo :copen<CR>
 
 " move up/down quickly by using Cmd-j, Cmd-k
 " which will move us around by functions
-nnoremap <silent> <D-j> }
-nnoremap <silent> <D-k> {
-autocmd FileType ruby map <buffer> <D-j> ]m
-autocmd FileType ruby map <buffer> <D-k> [m
-autocmd FileType rspec map <buffer> <D-j> }
-autocmd FileType rspec map <buffer> <D-k> {
-autocmd FileType javascript map <buffer> <D-k> }
-autocmd FileType javascript map <buffer> <D-j> {
+if has('gui_running')
+  nnoremap <silent> <D-j> }
+  nnoremap <silent> <D-k> {
+  autocmd FileType ruby map <buffer> <D-j> ]m
+  autocmd FileType ruby map <buffer> <D-k> [m
+  autocmd FileType rspec map <buffer> <D-j> }
+  autocmd FileType rspec map <buffer> <D-k> {
+  autocmd FileType javascript map <buffer> <D-k> }
+  autocmd FileType javascript map <buffer> <D-j> {
+endif
 
 
 "GitGrep - open up a git grep line, with a quote started for the search

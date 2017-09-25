@@ -4,6 +4,7 @@
     company-flow
     eslintd-fix
     flycheck
+    prettier-js
     rjsx-mode
     ))
 
@@ -42,9 +43,9 @@
     :defer t
     :init
     (progn
-      (add-hook 'web-typescript-mode-hook #'add-node-modules-path)
-      (add-hook 'web-mode-hook #'add-node-modules-path)
-      (add-hook 'typescript-mode-hook #'add-node-modules-path)
+      ;; (add-hook 'web-typescript-mode-hook #'add-node-modules-path)
+      ;; (add-hook 'web-mode-hook #'add-node-modules-path)
+      ;; (add-hook 'typescript-mode-hook #'add-node-modules-path)
       (with-eval-after-load 'rjsx-mode
         (add-hook 'rjsx-mode-hook #'add-node-modules-path)))))
 
@@ -60,3 +61,15 @@
     (push 'json-jsonlint flycheck-disabled-checkers))
 
   (spacemacs/enable-flycheck 'rjsx-mode))
+
+(defun rjsx/init-prettier-js ()
+  (use-package prettier-js
+    :defer t
+    :init
+    (progn
+      (add-hook 'rjsx-mode-hook 'prettier-js-mode)
+      (setq prettier-js-args '(
+                               "--trailing-comma" "es5"
+                               "--bracket-spacing" "false"
+                               "--no-semi"
+                               "--single-quote")))))
