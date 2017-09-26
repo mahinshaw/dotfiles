@@ -82,13 +82,13 @@ This function should only modify configuration layer settings."
      html
      ;; idris
      (java :variables java-backend 'meghanada)
-     javascript
+     ;; javascript
      markdown
      ocaml
      ;; php
      ;; racket
      ;; react
-     ;; rjsx
+     rjsx
      ;; (ruby :variables
      ;;       ruby-test-runner 'minitest
      ;;       ruby-enable-enh-ruby-mode t

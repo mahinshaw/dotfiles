@@ -8,6 +8,7 @@
     evil-matchit
     flycheck
     impatient-mode
+    indium
     js-doc
     js2-refactor
     json-mode
@@ -93,6 +94,7 @@
                   :after
                   #'rjsx/js-jsx-indent-line-align-closing-bracket)
       (add-hook 'rjsx-mode-hook #'rjsx/eslintd-set-flycheck-executable t)
+
       ;; prefixes
       (spacemacs/declare-prefix-for-mode 'rjsx-mode "mh" "documentation")
       (spacemacs/declare-prefix-for-mode 'rjsx-mode "mg" "goto")
@@ -116,7 +118,7 @@
       (modify-syntax-entry ?_ "w" js2-mode-syntax-table))))
 
 (defun rjsx/post-init-evil-matchit ()
-  (add-hook `js2-mode `turn-on-evil-matchit-mode))
+  (add-hook `rjsx-mode-hook `turn-on-evil-matchit-mode))
 
 (defun rjsx/init-js2-refactor ()
   (use-package js2-refactor
@@ -191,7 +193,7 @@
     :config
     (progn
       (spacemacs|hide-lighter tern-mode)
-      (when rjsx/disable-tern-port-files
+      (when rjsx-disable-tern-port-files
         (add-to-list 'tern-command "--no-port-file" 'append))
       (rjsx/set-tern-key-bindings 'rjsx-mode))))
 
@@ -221,3 +223,44 @@
                                "--bracket-spacing" "false"
                                "--no-semi"
                                "--single-quote")))))
+(defun rjsx/init-indium ()
+  (use-package indium
+    :defer t
+    :init
+    (progn
+      (add-hook 'rjsx-mode-hook #'rjsx/indium-hook)
+
+      (spacemacs/declare-prefix-for-mode 'rjsx-mode "md" "debug")
+      (spacemacs/declare-prefix-for-mode 'rjsx-mode "mdb" "breakpoint")
+      (spacemacs/declare-prefix-for-mode 'rjsx-mode "me" "eval")
+      (spacemacs/declare-prefix-for-mode 'rjsx-mode "ms" "repl")
+
+      (spacemacs/set-leader-keys-for-major-mode 'rjsx-mode
+        "dba" 'indium-activate-breakpoints
+        "dbb" 'indium-breakpoint-add
+        "dbc" 'indium-breakpoint-condition
+        "dbd" 'indium-deactivate-breakpoints
+        "dbe" 'indium-breakpoint-edit-condition
+        "dbk" 'indium-breakpoint-remove
+        "dbK" 'indium-breakpoint-remove-all
+        ""
+        "de" 'indium-debugger-evaluate
+
+        "ei" 'indium-eval
+        "eb" 'indium-eval-buffer
+        "ee" 'indium-eval-last-node
+        "ef" 'indium-eval-defun
+
+        "ss" 'indium-switch-to-repl-buffer
+        "sS" 'indium-scratch
+        "si" 'indium-run-node
+        "sI" 'indium-run-chrome
+        "sq" 'indium-quit
+        "sr" 'indium-restart-node)
+      (spacemacs/set-leader-keys-for-major-mode 'indium-repl-mode
+        "sc" 'indium-repl-clear-output
+        "ss" 'indium-repl-pop-buffer
+        "sS" 'indium-scratch
+        )
+      )))
+

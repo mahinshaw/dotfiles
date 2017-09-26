@@ -29,7 +29,6 @@
 
 (defun rjsx/js2-refactor-require ()
   "Lazy load js2-refactor"
-  (message "Loading js2 refactor")
   (require 'js2-refactor))
 
 (defun rjsx/set-tern-key-bindings (mode)
@@ -49,3 +48,8 @@
     (unless found
       (spacemacs-buffer/warning "tern binary not found!"))
     found))
+
+(defun rjsx/indium-hook ()
+  "Lazy load indium, and init indium-interaction-mode."
+  (require 'indium)
+  (indium-interaction-mode))
