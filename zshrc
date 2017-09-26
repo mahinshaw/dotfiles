@@ -96,6 +96,12 @@ alias trig='tree -I $(_gitignore_to_regex)'
 # Mono
 alias fsi='fsharpi --nologo --consolecolors'
 
+#Browser
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+  alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
+fi
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -243,7 +243,7 @@
         "dbe" 'indium-breakpoint-edit-condition
         "dbk" 'indium-breakpoint-remove
         "dbK" 'indium-breakpoint-remove-all
-        ""
+
         "de" 'indium-debugger-evaluate
 
         "ei" 'indium-eval
