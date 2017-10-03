@@ -261,6 +261,7 @@
         "sc" 'indium-repl-clear-output
         "ss" 'indium-repl-pop-buffer
         "sS" 'indium-scratch
+        "sq" 'indium-quit
         )
       )))
 
