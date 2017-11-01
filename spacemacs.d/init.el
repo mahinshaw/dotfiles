@@ -68,7 +68,7 @@ This function should only modify configuration layer settings."
 
      ;; LANGUAGES
      ;; asciidoc
-     csharp
+     ;; csharp
      clojure
      emacs-lisp
      ;; erlang
@@ -139,6 +139,9 @@ It should only modify the values of Spacemacs settings."
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    ;; (default 5)
    dotspacemacs-elpa-timeout 5
+   ;; If non-nil then verify the signature for downloaded Spacelpa archives.
+   ;; (default nil)
+   dotspacemacs-verify-spacelpa-archives nil
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -146,8 +149,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-check-for-update nil
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
-   ;; to `emacs-version'. (default nil)
-   dotspacemacs-elpa-subdirectory nil
+   ;; to `emacs-version'. (default 'emacs-version)
+   dotspacemacs-elpa-subdirectory 'emacs-version
    ;; One of `vim', `emacs' or `hybrid'.
    ;; `hybrid' is like `vim' except that `insert state' is replaced by the
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
@@ -612,12 +615,13 @@ before packages are loaded."
   ;; elisp
   (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
 
-  (setq powerline-default-separator 'nil
-        eclim-eclipse-dirs  "/Users/Mark/eclipse/java-neon/Eclipse.app/Contents/Eclipse"
-        eclim-executable  "/Users/Mark/eclipse/java-neon/Eclipse.app/Contents/Eclipse/eclim")
+  ;; For whatever reason, powerline default separator breaks search. -> https://github.com/syl20bnr/spacemacs/issues/9220
+  ;; (setq powerline-default-separator 'nil
+  ;;       eclim-eclipse-dirs  "/Users/Mark/eclipse/java-neon/Eclipse.app/Contents/Eclipse"
+  ;;       eclim-executable  "/Users/Mark/eclipse/java-neon/Eclipse.app/Contents/Eclipse/eclim")
 
   ;; csharp
-  (setq-default omnisharp-server-executable-path "/Users/Mark/workspace/csharp/omnisharp-roslyn/artifacts/publish/OmniSharp/default/netcoreapp1.1/OmniSharp")
+  ;; (setq-default omnisharp-server-executable-path "/Users/Mark/workspace/csharp/omnisharp-roslyn/artifacts/publish/OmniSharp/default/netcoreapp1.1/OmniSharp")
   ;; (setq omnisharp-use-http t)
 
   ;; HTML
@@ -652,6 +656,11 @@ before packages are loaded."
   (define-key evil-motion-state-map (kbd "C-j") 'evil-window-down)
   (define-key evil-motion-state-map (kbd "C-k") 'evil-window-up)
   (define-key evil-motion-state-map (kbd "C-l") 'evil-window-right)
+  ;; for shells, rebind in normal mode
+  (with-eval-after-load 'term
+      (evil-define-key 'normal term-raw-map
+     (kbd "C-k") 'evil-window-up
+     (kbd "C-j") 'evil-window-down))
 
   ;; I needs me arrows
   (define-key evil-insert-state-map (kbd "C-l") "=> ")

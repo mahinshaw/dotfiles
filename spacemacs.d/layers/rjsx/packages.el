@@ -1,7 +1,7 @@
 (defconst rjsx-packages
   '(
     add-node-modules-path
-    company
+    ;; company
     company-flow
     (company-tern :requires company)
     eslintd-fix
@@ -83,12 +83,13 @@
       (add-hook 'rjsx-mode-hook 'js2-imenu-extras-mode)
 
       (setq
-       js2-mode-show-strict-warnings nil
-       js2-mode-show-parse-errors nil
+       ;; js2-mode-show-strict-warnings nil
+       ;; js2-mode-show-parse-errors nil
        js-indent-level 2
        js2-basic-offset 2
-       js2-strict-trailing-comma-warning nil
-       js2-strict-missing-semi-warning nil)
+       ;; js2-strict-trailing-comma-warning nil
+       ;; js2-strict-missing-semi-warning nil
+       )
 
       (advice-add #'js-jsx-indent-line
                   :after
@@ -220,8 +221,6 @@
       (add-hook 'rjsx-mode-hook #'prettier-js-mode)
       (setq prettier-js-args '(
                                "--trailing-comma" "es5"
-                               "--bracket-spacing" "false"
-                               "--no-semi"
                                "--single-quote")))))
 (defun rjsx/init-indium ()
   (use-package indium
