@@ -219,9 +219,7 @@
     :init
     (progn
       (add-hook 'rjsx-mode-hook #'prettier-js-mode)
-      (setq prettier-js-args '(
-                               "--trailing-comma" "es5"
-                               "--single-quote")))))
+      (setq prettier-js-args '("--single-quote")))))
 (defun rjsx/init-indium ()
   (use-package indium
     :defer t
