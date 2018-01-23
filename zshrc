@@ -90,7 +90,9 @@ alias fsi='fsharpi --nologo --consolecolors'
 #Browser
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+  alias chrome-debug='chrome --remote-debugging-port=9222 &'
   alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
+  alias canary-debug='canary --remote-debugging-port=9222 &'
 fi
 
 # FZF

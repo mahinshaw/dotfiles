@@ -56,8 +56,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export SCALA_HOME=/usr/local/Cellar/scala/libexec
   export GROOVY_HOME=/usr/local/Cellar/groovy/libexec
   export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
-  # export NVM_DIR=~/.nvm
-  # . $(brew --prefix nvm)/nvm.sh
 else
   export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 fi
