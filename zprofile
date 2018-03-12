@@ -123,3 +123,8 @@ fi
 
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Confluent tools
+export CONFLUENT_HOME="$HOME/tools/confluent-4.0.0"
+export CONFLUENT_CURRENT="$CONFLUENT_HOME/var"
+export PATH="$CONFLUENT_HOME/bin:$PATH"

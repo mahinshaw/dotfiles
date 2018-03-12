@@ -254,7 +254,7 @@ It should only modify the values of Spacemacs settings."
    ;; to create your own spaceline theme. Value can be a symbol or list with\
    ;; additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.1)
+   dotspacemacs-mode-line-theme '(spacemacs :separator nil :separator-scale 1.1)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -526,6 +526,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
    ;; Projectile caching
    projectile-enable-caching t
+   ;; projectile-generic-command "find . -type f -print0"
 
    ;; Flycheck
    flycheck-check-syntax-automatically '(save mode-enabled)
@@ -859,30 +860,6 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (helm-flyspell company-racer align-cljlet seq geiser omnisharp csharp-mode groovy-mode gradle-mode meghanada restclient-helm ob-restclient company-restclient know-your-http-well edbi epc ctable concurrent deferred sql-indent hide-comnt helm-purpose window-purpose imenu-list pug-mode adoc-mode markup-faces dumb-jump yaml-mode cargo ht org sicp toml-mode racer rust-mode flycheck-rust srefactor idris-mode prop-menu helm-gtags ggtags emoji-cheat-sheet-plus company-emoji marshal evil-unimpaired org-projectile github-search nginx-mode vimrc-mode dactyl-mode noflet ensime sbt-mode scala-mode inf-clojure log4e gntp parent-mode request haml-mode gitignore-mode fringe-helper git-gutter+ logito pcache flx grizzl with-editor goto-chg undo-tree diminish web-completion-data pos-tip inflections edn peg eval-sexp-fu spinner queue pkg-info epl bind-key auto-complete package-build gh highlight paredit emacs-eclim jdee anzu flyspell-correct-helm flyspell-correct auto-dictionary color-identifiers-mode skewer-mode simple-httpd json-snatcher json-reformat dash-functional tern popup rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake f chruby bundler inf-ruby packed git-gutter git-commit nlinum-relative nlinum company iedit multiple-cursors magit-popup hydra smartparens bind-map projectile s evil alert markdown-mode powerline helm helm-core wgrep smex counsel swiper ivy avy yasnippet js2-mode dash cider clojure-mode flycheck magit async racket-mode faceup xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode restclient restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file ob-http neotree multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode linum-relative link-hint leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-pos-tip flx-ido flatland-theme fill-column-indicator fasd fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elisp-slime-nav diff-hl define-word company-web company-tern company-statistics company-quickhelp column-enforce-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
- '(safe-local-variable-values
-   (quote
-    ((eval setenv "JVM_OPTS" "-Ddev -Ddbdir=/usr/local/var/postgres")
-     (cider-boot-parameters . "cider repl -s wait")
-     (cider-boot-parameters . "cider repls -s wait")
-     (cider-cljs-lein-repl . "(start-figwheel [\"test\" \"tutorial\"])")
-     (clojure-indent-style . :always-align)
-     (clojure-indent-style . :always-indent)
-     (cider-cljs-lein-repl . "(start-figwheel)")))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
 This is an auto-generated function, do not modify its content directly, use
