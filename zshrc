@@ -20,7 +20,15 @@ fi
 # fi
 
 # completions in home dir
-fpath+="$HOME/.zfunc"
+fpath=("$HOME/.zfunc" $fpath)
+# kubernetes is special.
+if [ $commands[kubectl] ]; then
+    source <(kubectl completion zsh)
+fi
+if [ $commands[minikube] ]; then
+    source <(minikube completion zsh)
+fi
+
 
 # fasd for fast file searching
 # only init if installed.

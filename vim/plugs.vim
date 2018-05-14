@@ -6,10 +6,9 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Unite
-" Plug 'Shougo/unite.vim'
-" Plug 'Shougo/unite-outline'
-" Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Ruby, Rails, Rake...

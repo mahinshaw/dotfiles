@@ -40,44 +40,42 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
 
-     ;; TOOLS
+     ;; EMACS TOOLS
      helm
      spacemacs-layouts
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t)
-     ;; Use evil-commentary instead of evil-nerd-commenter
      colors
      csv
-     docker
      evil-commentary
      fasd
      (git :variables
           git-magit-status-fullscreen t)
      ;; If you are not using github, this layer will hose you.
      ;; github
-     nginx
      org
      restclient
      (shell :variables
-            shell-default-shell 'multi-term
+            shell-default-shell 'eshell ;;'multi-term
             shell-default-height 30
             shell-default-position 'bottom)
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      syntax-checking
-     vagrant
      version-control
      vinegar
 
-     ;; LANGUAGES
+     ;; Major Modes and Language
+     ansible
      ;; asciidoc
      csharp
      clojure
+     docker
      emacs-lisp
      ;; erlang
      ;; elixir
-     fsharp
+     ;; fsharp
      ;; (go :variables
      ;;     go-use-gometalinter t
      ;;     gofmt-cmmand "goimports"
@@ -85,14 +83,16 @@ This function should only modify configuration layer settings."
      groovy
      html
      ;; idris
-     (java :variables java-backend 'meghanada)
+     ;; (java :variables java-backend 'meghanada)
      lsp
-     ;; lsp-java
+     lsp-java
      ;; javascript
      kotlin
+     kubernetes
      (markdown :variables
                markdown-command "cmark-gfm -e table"
                markdown-live-preview-engine 'vmd)
+     nginx
      ocaml
      ;; reasonml
      ;; php
@@ -111,6 +111,7 @@ This function should only modify configuration layer settings."
      ;;        scala-auto-start-ensime t
      ;;        scala-enable-eldoc t)
      sql
+     vagrant
      yaml
      )
 
@@ -125,6 +126,7 @@ This function should only modify configuration layer settings."
                                       apache-mode
                                       direnv
                                       inf-clojure
+                                      ;; lsp-java
                                       vue-mode
                                       vue-html-mode
                                       ;; sicp
@@ -455,6 +457,9 @@ It should only modify the values of Spacemacs settings."
    ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
 
+   ;; If non-nil, start an Emacs server if one is not already running.
+   dotspacemacs-enable-server t
+
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
    dotspacemacs-persistent-server nil
@@ -555,6 +560,12 @@ before packages are loaded."
 
   ;; java 2 spaces please
   (add-hook 'java-mode-hook (lambda () (setq c-basic-offset 2)))
+  ;; (add-hook 'meghanada-mode-hook (lambda () (add-hook 'before-save-hook #'meghanada-code-beautify nil 'local)))
+  ;; ;; lsp-java
+  ;; (require 'lsp-mode)
+  ;; (require 'lsp-java)
+  ;; (add-hook 'java-mode-hook #'lsp-java-enable)
+  ;; (setq lsp-java--workspace-folders (list "/Users/mhinshaw/workspace/kollective/kollective_connect/"))
 
   ;; projectile hooks
   (with-eval-after-load 'projectile
@@ -597,138 +608,7 @@ before packages are loaded."
       (provided :defn)
       (assertions 0)
       (when-mocking 0)
-      (a :defn)
-      (abbr :defn)
-      (address :defn)
-      (area :defn)
-      (article :defn)
-      (aside :defn)
-      (audio :defn)
-      (b :defn)
-      (base :defn)
-      (bdi :defn)
-      (bdo :defn)
-      (big :defn)
-      (blockquote :defn)
-      (body :defn)
-      (br :defn)
-      (button :defn)
-      (canvas :defn)
-      (caption :defn)
-      (cite :defn)
-      (code :defn)
-      (col :defn)
-      (colgroup :defn)
-      (data :defn)
-      (datalist :defn)
-      (dd :defn)
-      (del :defn)
-      (details :defn)
-      (dfn :defn)
-      (dialog :defn)
-      (div :defn)
-      (dl :defn)
-      (dt :defn)
-      (em :defn)
-      (embed :defn)
-      (fieldset :defn)
-      (figcaption :defn)
-      (figure :defn)
-      (footer :defn)
-      (form :defn)
-      (h1 :defn)
-      (h2 :defn)
-      (h3 :defn)
-      (h4 :defn)
-      (h5 :defn)
-      (h6 :defn)
-      (head :defn)
-      (header :defn)
-      (hr :defn)
-      (html :defn)
-      (i :defn)
-      (iframe :defn)
-      (img :defn)
-      (ins :defn)
-      (kbd :defn)
-      (keygen :defn)
-      (label :defn)
-      (legend :defn)
-      (li :defn)
-      (link :defn)
-      (main :defn)
-      ;; there is a map tag ... really
-      ;; (map :defn)
-      (mark :defn)
-      (menu :defn)
-      (menuitem :defn)
-      (meta :defn)
-      (meter :defn)
-      (nav :defn)
-      (noscript :defn)
-      (object :defn)
-      (ol :defn)
-      (optgroup :defn)
-      (option :defn)
-      (output :defn)
-      (p :defn)
-      (param :defn)
-      (picture :defn)
-      (pre :defn)
-      (progress :defn)
-      (q :defn)
-      (rp :defn)
-      (rt :defn)
-      (ruby :defn)
-      (s :defn)
-      (samp :defn)
-      (script :defn)
-      (section :defn)
-      (select :defn)
-      (small :defn)
-      (source :defn)
-      (span :defn)
-      (strong :defn)
-      (style :defn)
-      (sub :defn)
-      (summary :defn)
-      (sup :defn)
-      (table :defn)
-      (tbody :defn)
-      (td :defn)
-      (tfoot :defn)
-      (th :defn)
-      (thead :defn)
-      (time :defn)
-      (title :defn)
-      (tr :defn)
-      (track :defn)
-      (u :defn)
-      (ul :defn)
-      (var :defn)
-      (video :defn)
-      (wbr :defn)
-
-      ;; svg
-      (circle :defn)
-      (clipPath :defn)
-      (ellipse :defn)
-      (g :defn)
-      (line :defn)
-      (mask :defn)
-      (path :defn)
-      (pattern :defn)
-      (polyline :defn)
-      (rect :defn)
-      (svg :defn)
-      (text :defn)
-      (defs :defn)
-      (linearGradient :defn)
-      (polygon :defn)
-      (radialGradient :defn)
-      (stop :defn)
-      (tspan :defn)
- ))
+      ))
 
   (with-eval-after-load 'clj-refactor
     (define-key clj-refactor-map "/" nil)
@@ -870,29 +750,13 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol t)
  '(package-selected-packages
    (quote
-    (solarized-theme projectile-rails feature-mode string-inflection symon nord-theme shut-up browse-at-remote groovy-imports company-emacs-eclim eclim monokai-theme direnv utop tuareg caml ocp-indent merlin go-eldoc magithub minitest enh-ruby-mode go-mode fuzzy darktooth-theme autothemer zenburn-theme ivy-purpose ivy-hydra flyspell-correct-ivy counsel-projectile winum go-guru flycheck-gometalinter dockerfile-mode docker tablist docker-tramp aurora-theme esup seq geiser omnisharp csharp-mode groovy-mode gradle-mode meghanada restclient-helm ob-restclient company-restclient know-your-http-well edbi epc ctable concurrent deferred sql-indent hide-comnt helm-purpose window-purpose imenu-list pug-mode adoc-mode markup-faces dumb-jump yaml-mode cargo ht org sicp toml-mode racer rust-mode flycheck-rust srefactor idris-mode prop-menu helm-gtags ggtags emoji-cheat-sheet-plus company-emoji marshal evil-unimpaired org-projectile github-search nginx-mode vimrc-mode dactyl-mode noflet ensime sbt-mode scala-mode inf-clojure log4e gntp parent-mode request haml-mode gitignore-mode fringe-helper git-gutter+ logito pcache flx grizzl with-editor goto-chg undo-tree diminish web-completion-data pos-tip inflections edn peg eval-sexp-fu spinner queue pkg-info epl bind-key auto-complete package-build gh highlight paredit emacs-eclim jdee anzu flyspell-correct-helm flyspell-correct auto-dictionary color-identifiers-mode skewer-mode simple-httpd json-snatcher json-reformat dash-functional tern popup rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake f chruby bundler inf-ruby packed git-gutter git-commit nlinum-relative nlinum company iedit multiple-cursors magit-popup hydra smartparens bind-map projectile s evil alert markdown-mode powerline helm helm-core wgrep smex counsel swiper ivy avy yasnippet js2-mode dash cider clojure-mode flycheck magit async racket-mode faceup xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode restclient restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file ob-http neotree multi-term move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode linum-relative link-hint leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md flycheck-pos-tip flx-ido flatland-theme fill-column-indicator fasd fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elisp-slime-nav diff-hl define-word company-web company-tern company-statistics company-quickhelp column-enforce-mode coffee-mode clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
- '(safe-local-variable-values
-   (quote
-    ((cider-cljs-lein-repl . "(start-figwheel [\"dev\" \"cards\"])")
-     (cider-cljs-lein-repl . "(start-figwheel [\"dev\"])")
-     (cider-cljs-lein-repl . "(start-figwheel [\"dev\" \"test\"])")
-     (eval setq cider-cljs-lein-repl "(start-figwheel)")
-     (eval setenv "JVM_OPTS" "-Ddev -Ddbdir=/usr/local/var/postgres")
-     (cider-boot-parameters . "cider repl -s wait")
-     (cider-boot-parameters . "cider repls -s wait")
-     (cider-cljs-lein-repl . "(start-figwheel [\"test\" \"tutorial\"])")
-     (clojure-indent-style . :always-align)
-     (clojure-indent-style . :always-indent)
-     (cider-cljs-lein-repl . "(start-figwheel)")))))
+    (tuareg pyvenv evil-matchit direnv anaconda-mode counsel ivy lsp-mode helm helm-core cider yasnippet magit org-plus-contrib bind-key zerodark-theme zenburn-theme yasnippet-snippets yapfify yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify vue-mode volatile-highlights vmd-mode vi-tilde-fringe vagrant-tramp vagrant uuidgen utop use-package toml-mode toc-org tagedit symon swiper string-inflection sql-indent spaceline-all-the-icons solarized-theme smeargle slim-mode shell-pop scss-mode sayid sass-mode rjsx-mode restclient-helm restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer queue pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file omnisharp ocp-indent ob-restclient ob-http nginx-mode neotree nameless multi-term move-text monokai-theme markdown-toc magit-gitflow macrostep lsp-ui lsp-python lsp-java lorem-ipsum live-py-mode linum-relative link-hint kubernetes-evil kotlin-mode js2-refactor js-doc jinja2-mode inf-clojure indium indent-guide importmagic impatient-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag groovy-mode groovy-imports google-translate google-java-format golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ ghub gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-rust flycheck-pos-tip flycheck-ocaml flycheck-kotlin flx-ido flatland-theme fill-column-indicator fasd fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-mc evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eslintd-fix eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump doom-themes dockerfile-mode docker diminish diff-hl define-word darktooth-theme cython-mode csv-mode counsel-projectile company-web company-tern company-statistics company-restclient company-quickhelp company-lsp company-ansible company-anaconda column-enforce-mode color-identifiers-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu centered-cursor-mode cargo caml browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apache-mode ansible-doc ansible aggressive-indent add-node-modules-path adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#FDF4C1" :background "#282828"))))
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ )
 )
