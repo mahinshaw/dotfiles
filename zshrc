@@ -19,8 +19,6 @@ fi
 #   chruby $(cat ~/.ruby-version)
 # fi
 
-# completions in home dir
-fpath=("$HOME/.zfunc" $fpath)
 # kubernetes is special.
 if [ $commands[kubectl] ]; then
     source <(kubectl completion zsh)

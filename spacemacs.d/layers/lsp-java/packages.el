@@ -85,6 +85,7 @@ Each entry is either:
               "="  'google-java-format-buffer
               "as" 'lsp-action-retrieve-and-run
               "gG" 'xref-find-definitions-other-window
+              "gi" 'helm-imenu
               "gr" 'xref-find-references
 
               "ha" 'xref-find-apropos
@@ -93,6 +94,7 @@ Each entry is either:
 
               "ug" 'lsp-ui-peek-find-definitions
               "ui" 'lsp-ui-peek-find-implementation
+              "ui" 'lsp-ui-imenu
               "ur" 'lsp-ui-peek-find-references
               )
             (add-to-list 'spacemacs-jump-handlers-java-mode 'xref-find-definitions)
@@ -115,5 +117,8 @@ Each entry is either:
   (use-package google-java-format
     :defer t
     :init (progn
-            (setq google-java-format-executable (executable-find "google-java-format")))))
+            (setq google-java-format-executable (executable-find "google-java-format"))
+            (add-hook 'java-mode-hook
+                      (lambda ()
+                        (add-hook 'before-save-hook #'google-java-format-buffer nil 'local))))))
 ;;; packages.el ends here

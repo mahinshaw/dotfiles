@@ -3,8 +3,10 @@
   (if (configuration-layer/layer-used-p 'lsp)
       (progn
         (require 'lsp-java)
+        (setq lsp-java-format-enabled nil
+              lsp-java-organize-imports nil)
         (lsp-java-enable)
-        )
+        (spacemacs//setup-lsp-jump-handler 'java-mode))
     (message "`lsp' layer is not installed, please add `lsp' layer to your dofile.")))
 
 (defun lsp-action-retrieve-and-run ()

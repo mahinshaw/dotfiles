@@ -36,6 +36,8 @@ let mapleader=","
 " =============== vim-plug Initialization ===============
 " This loads all the plugins specified in ~/.vim/plugs.vim
 " Use vim-plug to manage all other plugins.
+let g:python_host_prog= '/usr/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 if filereadable(expand("~/.vim/plugs.vim"))
   source ~/.vim/plugs.vim
 endif
