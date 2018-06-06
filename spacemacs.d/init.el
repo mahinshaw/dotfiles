@@ -76,30 +76,30 @@ This function should only modify configuration layer settings."
      ;; erlang
      ;; elixir
      ;; fsharp
-     ;; (go :variables
-     ;;     go-use-gometalinter t
-     ;;     gofmt-cmmand "goimports"
-     ;;     go-tab-width 4)
+     (go :variables
+         go-use-gometalinter t
+         gofmt-cmmand "goimports"
+         go-tab-width 4)
      groovy
      html
      ;; idris
      ;; (java :variables java-backend 'meghanada)
      lsp
      lsp-java
-     ;; javascript
+     javascript
      kotlin
      kubernetes
      (markdown :variables
                markdown-command "cmark-gfm -e table"
                markdown-live-preview-engine 'vmd)
      nginx
-     ocaml
+     ;; ocaml
      ;; reasonml
      ;; php
      python
      ;; racket
      ;; react
-     rjsx
+     ;; rjsx
      ;; (ruby :variables
      ;;       ruby-test-runner 'minitest
      ;;       ruby-enable-enh-ruby-mode t
@@ -111,6 +111,7 @@ This function should only modify configuration layer settings."
      ;;        scala-auto-start-ensime t
      ;;        scala-enable-eldoc t)
      sql
+     terraform
      vagrant
      yaml
      )
@@ -163,8 +164,8 @@ It should only modify the values of Spacemacs settings."
 
    ;; File path pointing to emacs 27.1 executable compiled with support
    ;; for the portable dumper (this is currently the branch pdumper).
-   ;; (default "emacs")
-   dotspacemacs-emacs-pdumper-executable-file "emacs"
+   ;; (default "emacs-27.0.50")
+   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
 
    ;; Name of the Spacemacs dump file. This is the file will be created by the
    ;; portable dumper in the cache directory under dumps sub-directory.

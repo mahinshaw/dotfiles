@@ -12,4 +12,4 @@
 
 -- Use best available output format
 \set VERBOSITY verbose
-\set COMP_KEYWORKD_CASE upper
+\set COMP_KEYWORD_CASE upper
