@@ -1,6 +1,7 @@
 # Personal Items #
 ##################
 Project_Notes.*
+TODOs.org
 
 # Emacs #
 #########
@@ -59,6 +60,7 @@ Desktop.ini
 #############################
 .lein-repl-history
 .nrepl-port
+.nrepl-history
 .cljs_rhino_repl/*
 
 # Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore

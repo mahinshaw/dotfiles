@@ -34,10 +34,10 @@
   '(
     company
     flycheck
-    (lsp-java :requires lsp-mode)
-    (google-java-format :location (recipe
-                                   :fetcher url
-                                   :url "https://raw.githubusercontent.com/google/google-java-format/master/core/src/main/scripts/google-java-format.el"))
+    (lsp-java
+     :location local
+     :requires lsp-mode)
+    (google-java-format :location local)
     )
   "The list of Lisp packages required by the lsp-java layer.
 
@@ -78,6 +78,7 @@ Each entry is either:
             (spacemacs/declare-prefix-for-mode 'java-mode "mg" "goto")
             (spacemacs/declare-prefix-for-mode 'java-mode "mh" "documentation")
             (spacemacs/declare-prefix-for-mode 'java-mode "mr" "refactor")
+            (spacemacs/declare-prefix-for-mode 'java-mode "ms" "server")
             (spacemacs/declare-prefix-for-mode 'java-mode "mu" "lsp-ui")
 
             (spacemacs/set-leader-keys-for-major-mode 'java-mode
@@ -91,6 +92,9 @@ Each entry is either:
               "ha" 'xref-find-apropos
 
               "ri" 'lsp-java-organize-imports
+              "rn" 'lsp-rename
+
+              "sr" 'lsp-restart-workspace
 
               "ug" 'lsp-ui-peek-find-definitions
               "ui" 'lsp-ui-peek-find-implementation
