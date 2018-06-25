@@ -84,9 +84,13 @@ This function should only modify configuration layer settings."
      html
      ;; idris
      ;; (java :variables java-backend 'meghanada)
-     lsp
+     (lsp :variables
+          ;; the minibuiffer is TOOO LOUD
+          lsp-inhibit-message t
+          )
      lsp-java
      javascript
+     json
      kotlin
      kubernetes
      (markdown :variables
@@ -107,10 +111,10 @@ This function should only modify configuration layer settings."
      ;; ruby-on-rails
      rust
      ;; scheme
-     (scala :variables
-            scala-auto-start-ensime t
-            scala-enable-eldoc t
-            scala-auto-insert-asterisk-in-comments t)
+     ;; (my-scala :variables
+     ;;        scala-auto-start-ensime t
+     ;;        scala-enable-eldoc t
+     ;;        scala-auto-insert-asterisk-in-comments t)
      sql
      terraform
      vagrant
@@ -128,7 +132,6 @@ This function should only modify configuration layer settings."
                                       apache-mode
                                       direnv
                                       inf-clojure
-                                      ;; lsp-java
                                       vue-mode
                                       vue-html-mode
                                       ;; sicp
@@ -224,23 +227,6 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
-
-   ;; If non-nil then Spacemacs will import your PATH and environment variables
-   ;; from your default shell on startup. This is enabled by default for macOS
-   ;; users and X11 users.
-   dotspacemacs-import-env-vars-from-shell (and (display-graphic-p)
-                                                (or (eq system-type 'darwin)
-                                                    (eq system-type 'gnu/linux)
-                                                    (eq window-system 'x)))
-
-   ;; If nil then use the default shell is used to fetch the environment
-   ;; variables. Set this variable to a different shell executable path to
-   ;; import the environment variables from this shell. Note that
-   ;; `file-shell-name' is preserved and always points to the default shell. For
-   ;; instance to use your fish shell environment variables set this variable to
-   ;; `/usr/local/bin/fish'.
-   ;; (default nil)
-   dotspacemacs-import-env-vars-shell-file-name nil
 
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
@@ -583,15 +569,10 @@ before packages are loaded."
 
   ;; java 2 spaces please
   (add-hook 'java-mode-hook (lambda () (setq c-basic-offset 2)))
-  ;; (add-hook 'meghanada-mode-hook (lambda () (add-hook 'before-save-hook #'meghanada-code-beautify nil 'local)))
-  ;; ;; lsp-java
-  ;; (require 'lsp-mode)
-  ;; (require 'lsp-java)
-  ;; (add-hook 'java-mode-hook #'lsp-java-enable)
+
   (setq lsp-java--workspace-folders (list "/Users/mhinshaw/workspace/kollective/kollective_connect/" "/Users/mhinshaw/workspace/kollective/kollective-data-streams/"))
 
-  (setq ensime-startup-notification nil)
-
+  (add-to-list 'auto-mode-alist '("\\.avsc\\'" . json-mode))
   ;; projectile hooks
   (with-eval-after-load 'projectile
     (projectile-register-project-type 'yarn '("package.json")

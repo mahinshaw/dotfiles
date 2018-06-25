@@ -1,3 +1,4 @@
+# -*- mode: shell-script;-*-
 #
 # Sets Prezto options.
 #
@@ -214,7 +215,7 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
-zstyle ':prezto:module:tmux:session' name '(map runtime codes)'
+zstyle ':prezto:module:tmux:session' name '(map codes runtime)'
 
 #
 # Utility

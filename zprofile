@@ -1,3 +1,4 @@
+# -*- mode: shell-script;-*-
 #
 # Executes commands at login pre-zshrc.
 #

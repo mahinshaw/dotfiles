@@ -35,9 +35,10 @@
     company
     flycheck
     (lsp-java
-     :location local
+     ;; :location local
      :requires lsp-mode)
-    (google-java-format :location local)
+    (google-java-format
+     :location local)
     )
   "The list of Lisp packages required by the lsp-java layer.
 
@@ -78,21 +79,39 @@ Each entry is either:
             (spacemacs/declare-prefix-for-mode 'java-mode "mg" "goto")
             (spacemacs/declare-prefix-for-mode 'java-mode "mh" "documentation")
             (spacemacs/declare-prefix-for-mode 'java-mode "mr" "refactor")
+            (spacemacs/declare-prefix-for-mode 'java-mode "mre" "extract")
             (spacemacs/declare-prefix-for-mode 'java-mode "ms" "server")
             (spacemacs/declare-prefix-for-mode 'java-mode "mu" "lsp-ui")
 
             (spacemacs/set-leader-keys-for-major-mode 'java-mode
               ;; "gg" 'xref-find-definitions
               "="  'google-java-format-buffer
-              "as" 'lsp-action-retrieve-and-run
+              ;; "as" 'lsp-action-retrieve-and-run
+              "as" 'lsp-ui-sideline-apply-code-actions
+              "aa" 'lsp-execute-code-action
+              "an" 'lsp-java-actionable-notifications
+
+              "bp" 'lsp-java-build-project
+              "bu" 'lsp-java-update-project-configuration
+              "bU" 'lsp-java-update-user-settings
+
               "gG" 'xref-find-definitions-other-window
               "gi" 'helm-imenu
               "gr" 'xref-find-references
 
               "ha" 'xref-find-apropos
+              "hh" 'lsp-describe-thing-at-point
 
-              "ri" 'lsp-java-organize-imports
+              "rec" 'lsp-java-extract-to-constant
+              "rel" 'lsp-java-extract-to-local-variable
+              "rem" 'lsp-java-extract-method
+
+              "rf" 'lsp-java-create-field
+              "rl" 'lsp-java-create-local
+              "ri" 'lsp-java-add-import
+              "rI" 'lsp-java-organize-imports
               "rn" 'lsp-rename
+              "rp" 'lsp-java-create-parameter
 
               "sr" 'lsp-restart-workspace
 
@@ -105,7 +124,7 @@ Each entry is either:
             ;; (defadvice xref-find-definitions (before add-evil-jump activate) (evil-set-jump))
             )
     :commands lsp-java-enable
-     ))
+    ))
 
 (defun lsp-java/post-init-company ()
   (spacemacs|add-company-backends
@@ -119,10 +138,10 @@ Each entry is either:
 
 (defun lsp-java/init-google-java-format ()
   (use-package google-java-format
-    :defer t
     :init (progn
-            (setq google-java-format-executable (executable-find "google-java-format"))
             (add-hook 'java-mode-hook
                       (lambda ()
-                        (add-hook 'before-save-hook #'google-java-format-buffer nil 'local))))))
+                        (add-hook 'before-save-hook #'google-java-format-buffer nil 'local))))
+    :config (progn
+              (setq google-java-format-executable (executable-find "google-java-format")))))
 ;;; packages.el ends here
