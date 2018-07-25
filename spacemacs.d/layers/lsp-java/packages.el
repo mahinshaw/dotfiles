@@ -39,6 +39,10 @@
      :requires lsp-mode)
     (google-java-format
      :location local)
+    tree-mode
+    (dap-mode
+     :location local
+     :requires tree-mode)
     )
   "The list of Lisp packages required by the lsp-java layer.
 
@@ -76,6 +80,11 @@ Each entry is either:
             (require 'lsp-imenu)
             (add-hook 'lsp-after-open-hook 'lsp-enable-imenu)
 
+            (spacemacs/declare-prefix-for-mode 'java-mode "ma" "action")
+            (spacemacs/declare-prefix-for-mode 'java-mode "mb" "build")
+            (spacemacs/declare-prefix-for-mode 'java-mode "md" "debug")
+            (spacemacs/declare-prefix-for-mode 'java-mode "mdd" "process")
+            (spacemacs/declare-prefix-for-mode 'java-mode "mds" "switch")
             (spacemacs/declare-prefix-for-mode 'java-mode "mg" "goto")
             (spacemacs/declare-prefix-for-mode 'java-mode "mh" "documentation")
             (spacemacs/declare-prefix-for-mode 'java-mode "mr" "refactor")
@@ -94,6 +103,26 @@ Each entry is either:
               "bp" 'lsp-java-build-project
               "bu" 'lsp-java-update-project-configuration
               "bU" 'lsp-java-update-user-settings
+
+              "db" 'dap-toggle-breakpoint
+              "dda" 'dap-java-attach
+              "ddj" 'dap-java-debug
+              "ddr" 'dap-java-run
+              "ddl" 'dap-debug-last-configuration
+              "dl" 'dap-ui-list-sessions
+              "dq" 'dap-disconnect
+              "dn" 'dap-next
+              "di" 'dap-step-in
+              "dc" 'dap-continue
+              "db" 'dap-toggle-breakpoint
+              "do" 'dap-step-out
+              "dss" 'dap-switch-session
+              "dst" 'dap-switch-thread
+              "dsf" 'dap-switch-stack-frame
+
+              "ee" 'dap-eval
+              "er" 'dap-eval-region
+              "es" 'dap-eval-dwim
 
               "gG" 'xref-find-definitions-other-window
               "gi" 'helm-imenu
@@ -120,9 +149,11 @@ Each entry is either:
               "ui" 'lsp-ui-imenu
               "ur" 'lsp-ui-peek-find-references
               )
-            (add-to-list 'spacemacs-jump-handlers-java-mode 'xref-find-definitions)
+            ;; (add-to-list 'spacemacs-jump-handlers-java-mode 'xref-find-definitions)
             ;; (defadvice xref-find-definitions (before add-evil-jump activate) (evil-set-jump))
             )
+    :hook ((java-mode . (lambda ()
+                          (add-to-list 'spacemacs-jump-handlers '(xref-find-definitions :async true)))))
     :commands lsp-java-enable
     ))
 
@@ -135,6 +166,26 @@ Each entry is either:
 
 (defun lsp-java/post-init-flycheck ()
   (spacemacs/enable-flycheck 'java-mode))
+
+(defun lsp-java/init-tree-mode ()
+  (use-package tree-mode))
+
+(defun lsp-java/init-dap-mode ()
+  (use-package dap-mode
+    :init (progn
+            (add-to-list 'lsp-java-bundles (expand-file-name
+                                            (locate-user-emacs-file
+                                             "eclipse.jdt.ls/plugins/com.microsoft.java.debug.plugin-0.10.0.jar")))
+            (add-hook 'lsp-after-open-hook 'dap-ui-mode))
+    :config (progn
+              (require 'dap-java)
+              (require 'dap-ui)
+              (require 'gdb-mi)
+              (add-hook 'java-mode-hook
+                        (lambda ()
+                          (dap-turn-on-dap-mode)
+                          ))
+              )))
 
 (defun lsp-java/init-google-java-format ()
   (use-package google-java-format

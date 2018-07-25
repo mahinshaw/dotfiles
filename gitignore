@@ -5,14 +5,19 @@ TODOs.org
 
 # Emacs #
 #########
+*.elc
+*-autoloads.el
+dir
+*.info
 *.#*
+*~
 .dir-locals.el
 .meghanada
 *.http # Restclient
 
 # Compiled source #
 ###################
-*.com
+# *.com
 *.class
 *.dll
 *.exe
