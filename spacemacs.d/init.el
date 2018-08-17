@@ -101,6 +101,7 @@ This function should only modify configuration layer settings."
      ;; ocaml
      ;; reasonml
      ;; php
+     protobuf
      python
      ;; racket
      ;; react
@@ -578,8 +579,19 @@ before packages are loaded."
 
   ;; java 2 spaces please
   (add-hook 'java-mode-hook (lambda () (setq c-basic-offset 2)))
+  ;; groovy 2 spaces
+  (setq groovy-indent-offset 2)
 
-  (setq lsp-java--workspace-folders (list "/Users/mhinshaw/workspace/kollective/kollective_connect/" "/Users/mhinshaw/workspace/kollective/kollective-data-streams/"))
+  (setq lsp-java--workspace-folders (list "/Users/mhinshaw/workspace/kollective/kollective_connect/"
+                                          "/Users/mhinshaw/workspace/kollective/merge-db-streams/"
+                                          "/Users/mhinshaw/workspace/kollective/db-source-merge/"
+                                          "/Users/mhinshaw/workspace/kollective/delivery-state/"
+                                          "/Users/mhinshaw/workspace/kollective/delivery-ktable/"
+                                          "/Users/mhinshaw/workspace/kollective/prod3-history-fix/"
+                                          "/Users/mhinshaw/workspace/java/streams/"
+                                          "/Users/mhinshaw/workspace/java/kafka-connect-storage-cloud/"
+                                          "/Users/mhinshaw/workspace/java/kafka-connect-jdbc/"
+                                          ))
 
   (add-to-list 'auto-mode-alist '("\\.avsc\\'" . json-mode))
   ;; projectile hooks

@@ -40,9 +40,10 @@
     (google-java-format
      :location local)
     tree-mode
+    bui
     (dap-mode
      :location local
-     :requires tree-mode)
+     :requires '(tree-mode bui))
     )
   "The list of Lisp packages required by the lsp-java layer.
 
@@ -149,6 +150,10 @@ Each entry is either:
               "ui" 'lsp-ui-imenu
               "ur" 'lsp-ui-peek-find-references
               )
+
+            (with-eval-after-load 'lsp-ui
+              (define-key lsp-ui-peek-mode-map (kbd "C-j") 'lsp-ui-peek--select-next)
+              (define-key lsp-ui-peek-mode-map (kbd "C-k") 'lsp-ui-peek--select-prev))
             ;; (add-to-list 'spacemacs-jump-handlers-java-mode 'xref-find-definitions)
             ;; (defadvice xref-find-definitions (before add-evil-jump activate) (evil-set-jump))
             )
@@ -166,6 +171,9 @@ Each entry is either:
 
 (defun lsp-java/post-init-flycheck ()
   (spacemacs/enable-flycheck 'java-mode))
+
+(defun lsp-java/init-bui ()
+  (use-package bui))
 
 (defun lsp-java/init-tree-mode ()
   (use-package tree-mode))
@@ -194,5 +202,6 @@ Each entry is either:
                       (lambda ()
                         (add-hook 'before-save-hook #'google-java-format-buffer nil 'local))))
     :config (progn
-              (setq google-java-format-executable (executable-find "google-java-format")))))
+              ;; (setq google-java-format-executable (executable-find "google-java-format"))
+              (setq google-java-format-executable "/usr/local/bin/google-java-format"))))
 ;;; packages.el ends here
