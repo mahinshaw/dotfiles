@@ -68,6 +68,7 @@ Desktop.ini
 .nrepl-port
 .nrepl-history
 .cljs_rhino_repl/*
+.cpcache
 
 # Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
 # ----------------------------------------------------------------------------------------------
