@@ -42,7 +42,9 @@ unset fasd_cache
 eval "$(direnv hook zsh)"
 
 # init opam env
-eval `opam config env`;
+if [ -x "$(command -v opam)" ]; then
+  eval `opam config env`;
+fi
 
 # ================ALIASES===================
 # use macvim in the terminal if it exits
