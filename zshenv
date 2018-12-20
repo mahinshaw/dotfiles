@@ -26,6 +26,7 @@ fpath=("$HOME/.zfunc" $fpath)
 # JVM
 if [[ "$OSTYPE" == darwin* ]]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
+    # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
     export SCALA_HOME=/usr/local/Cellar/scala/libexec
     export GROOVY_HOME=/usr/local/Cellar/groovy/libexec
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
@@ -39,7 +40,8 @@ export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export MANPATH=:/usr/local/opt/erlang/man
 export GOPATH=$HOME/workspace/go
-export PATH=$PATH:$HOME/workspace/go/bin
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$HOME/workspace/go/bin:$GOROOT
 
 # Perl things
 export PATH="$HOME/perl5/bin${PATH:+:${PATH}}";

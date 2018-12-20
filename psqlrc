@@ -2,10 +2,15 @@
 -- Mo help @ thoughbot/dotfiles
 
 -- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
-\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+\set PROMPT1 '%[%033[1m%]%n@%M %/%R%[%033[0m%]%# '
 -- PROMPT2 is printed when the prompt expects more input, like when you type
 -- SELECT * FROM<enter>. %R shows what type of input it expects.
 \set PROMPT2 '[more] %R > '
+
+-- use pspg
+\setenv PAGER 'pspg -b'
+\pset border 2
+\pset linestyle unicode
 
 -- Show how long each query takes to execute
 \timing
