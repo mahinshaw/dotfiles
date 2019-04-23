@@ -1,5 +1,7 @@
 source ~/.vimrc
 
+:imap <C-l> -><Space>
+
 :nmap <Space><Space> :action GotoAction<CR>
 :nmap <Space>bn :action VimMotionNextTab<CR>
 :nmap <Space>bp :action VimMotionPreviousTab<CR>

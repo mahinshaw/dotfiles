@@ -9,7 +9,7 @@
 ;; For all attributes other than :paths, these config files are merged left to right.
 ;; Only the last :paths is kept and others are dropped.
 
-{;; Paths
+ ;; Paths
  ;;   Directories in the current project to include in the classpath
 
  ;; :paths ["src"]
@@ -28,13 +28,8 @@
  ;;   make-classpath aliases (-C) affect the classpath generation, options:
  ;;     :extra-paths - vector of additional paths to add to the classpath
  ;;     :classpath-overrides - map of lib to path that overrides the result of resolving deps
- :aliases {:rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
-                   :main-opts  ["-m" "rebel-readline.main"]}
-           :cider {:extra-deps {org.clojure/tools.nrepl {:mvn/version "0.2.13"}
-                                com.billpiel/sayid      {:mvn/version "0.0.16"}
-                                refactor-nrepl          {:mvn/version "2.4.0-SNAPSHOT"}
-                                cider/cider-nrepl       {:mvn/version "0.18.0"}}
-                   :main-opts  ["-e" "(require (quote cider-nrepl.main)),(cider-nrepl.main/init [\"com.billpiel.sayid.nrepl-middleware/wrap-sayid\", \"refactor-nrepl.middleware/wrap-refactor\", \"cider.nrepl/cider-middleware\"])"]}};; :aliases {
+
+ ;; :aliases {
  ;;   :deps {:extra-deps {org.clojure/tools.deps.alpha {:mvn/version "0.2.196"}}}
  ;;   :test {:extra-paths ["test"]}
  ;; }
@@ -45,4 +40,14 @@
  ;;   "central" {:url "https://repo1.maven.org/maven2/"}
  ;;   "clojars" {:url "https://clojars.org/repo"}
  ;; }
-}
+
+{:aliases {:rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "LATEST"}}
+                   :main-opts  ["-m" "rebel-readline.main"]}
+           :cider {:extra-deps {nrepl              {:mvn/version "0.5.3"}
+                                com.billpiel/sayid {:mvn/version "0.0.17"}
+                                refactor-nrepl     {:mvn/version "2.4.0"}
+                                cider/cider-nrepl  {:mvn/version "0.20.0"}}
+                   :main-opts  ["-e" "(require (quote cider-nrepl.main)),(cider-nrepl.main/init [\"com.billpiel.sayid.nrepl-middleware/wrap-sayid\", \"refactor-nrepl.middleware/wrap-refactor\", \"cider.nrepl/cider-middleware\"])"]}
+           :new   {:extra-deps {seancorfield/clj-new
+                                {:mvn/version "0.5.5"}}
+                   :main-opts  ["-m" "clj-new.create"]}}}

@@ -15,6 +15,8 @@ dir
 .dir-locals.el
 .meghanada
 *.http # Restclient
+.breakpoints
+.projectile
 
 # Compiled source #
 ###################
@@ -33,7 +35,6 @@ dir
 *.dmg
 *.gz
 *.iso
-*.jar
 *.rar
 *.tar
 *.zip
@@ -57,10 +58,40 @@ Thumbs.db
 ###############
 compiled
 out
+build
 
 # Folder config file #
 ######################
 Desktop.ini
+
+# java #
+########
+.classpath
+.project
+.settings/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries
+.idea/shelf
+
+# Generated files
+.idea/contentModel.xml
+
+# Sensitive or high-churn files
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/sbt.xml
+.idea/**/libraries
+!gradle/wrapper/gradle-wrapper.jar
 
 # clojure(script)|lein|boot #
 #############################
@@ -69,6 +100,7 @@ Desktop.ini
 .nrepl-history
 .cljs_rhino_repl/*
 .cpcache
+.rebel_readline_history
 
 # Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
 # ----------------------------------------------------------------------------------------------
@@ -104,3 +136,5 @@ cabal.config
 .tern-config
 .tern-project
 .tern-port
+**/node_modules
+node_modules

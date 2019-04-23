@@ -30,6 +30,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
     export SCALA_HOME=/usr/local/Cellar/scala/libexec
     export GROOVY_HOME=/usr/local/Cellar/groovy/libexec
     export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+    export JAVA_8=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
 else
     export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 fi
@@ -69,7 +70,13 @@ export MONO_GAC_PREFIX="/usr/local";
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--inline-info'
 
-# export NVM_DIR="$HOME/.nvm"
-# . "/usr/local/opt/nvm/nvm.sh"
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
-# nvm use >> /dev/null
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# nvm use
