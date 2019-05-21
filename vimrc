@@ -38,6 +38,13 @@ let mapleader=","
 " Use vim-plug to manage all other plugins.
 let g:python_host_prog= '/usr/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
+
+" vim-hug-neovim-rpc
+if has('pythonx')
+  set pyxversion=3
+endif
+set encoding=utf-8
+
 if filereadable(expand("~/.vim/plugs.vim"))
   source ~/.vim/plugs.vim
 endif
@@ -279,6 +286,7 @@ autocmd FileType eruby imap <silent> <C-M> <%  %><Esc>2hi
 
 " create -> and <- easier
 imap <C-l> =><space>
+autocmd FileType java imap <C-l> -><space>
 imap <C-J> <-<Space>
 imap <C-K> -><Space>
 
