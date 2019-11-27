@@ -17,6 +17,7 @@ dir
 *.http # Restclient
 .breakpoints
 .projectile
+.ccls-cache
 
 # Compiled source #
 ###################

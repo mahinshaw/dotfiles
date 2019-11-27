@@ -36,7 +36,7 @@ else
 fi
 
 # local tools
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export MANPATH=:/usr/local/opt/erlang/man
@@ -63,6 +63,10 @@ export MONO_GAC_PREFIX="/usr/local";
 
 # OPAM configuration
 . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true;
+
+# build related
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+export C_INCLUDE_PATH=/usr/local/include
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
