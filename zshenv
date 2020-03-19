@@ -29,7 +29,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
     # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
     export SCALA_HOME=/usr/local/Cellar/scala/libexec
     export GROOVY_HOME=/usr/local/Cellar/groovy/libexec
-    export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
     export JAVA_8=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
 else
     export JAVA_HOME=/usr/lib/jvm/java-8-oracle
@@ -76,11 +75,20 @@ export FZF_DEFAULT_OPTS='--inline-info'
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+    # rehash before init
+    eval "$(pyenv init - --no-rehash)"
 fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
-# nvm use
+# use psql 11 because azure.
+export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+
+if command -v jenv 1>/dev/null 2>&1; then
+    eval "$(jenv init -)"
+fi

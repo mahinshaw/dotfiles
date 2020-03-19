@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" Unite
+" Deoplete
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -13,6 +13,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Ruby, Rails, Rake...

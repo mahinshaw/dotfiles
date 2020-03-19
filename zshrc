@@ -28,7 +28,6 @@ if [ $commands[minikube] ]; then
     source <(minikube completion zsh)
 fi
 
-
 # fasd for fast file searching
 # only init if installed.
 fasd_cache="$HOME/.fasd-init-bash"
@@ -81,11 +80,6 @@ fi
 alias du='du -h -d 2'
 alias ...='../..'
 
-# gpg is easier that gpg2 (brew/osx thing)
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  alias gpg='gpg2'
-fi
-
 # Show/Hide hidden files in Finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -95,6 +89,9 @@ alias trig='tree -I $(_gitignore_to_regex)'
 
 # Mono
 alias fsi='fsharpi --nologo --consolecolors'
+
+# Nodejs
+alias node="env NODE_NO_READLINE=1 rlwrap node"
 
 #Browser
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -107,5 +104,5 @@ fi
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_DEFAULT_OPTS='--inline-info'
+# get vars that you don't want in git.
+source ~/.zshrc.local
