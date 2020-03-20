@@ -176,9 +176,20 @@ font:
   #primary:
   #  background: '#000000'
   #  foreground: '#eaeaea'
+  # doom-one theme -> https://github.com/eendroroy/alacritty-theme
   primary:
-    background: '0x1e2127'
-    foreground: '0xabb2bf'
+    background: '0x282c34'
+    foreground: '0xbbc2cf'
+
+  normal:
+    black:   '0x282c34'
+    red:     '0xff6c6b'
+    green:   '0x98be65'
+    yellow:  '0xecbe7b'
+    blue:    '0x51afef'
+    magenta: '0xc678dd'
+    cyan:    '0x46d9ff'
+    white:   '0xbbc2cf'
 
     # Bright and dim foreground colors
     #
@@ -215,15 +226,6 @@ font:
   #  magenta: '#c397d8'
   #  cyan:    '#70c0ba'
   #  white:   '#eaeaea'
-  normal:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
 
   # Bright colors
   #bright:
@@ -235,15 +237,6 @@ font:
   #  magenta: '#b77ee0'
   #  cyan:    '#54ced6'
   #  white:   '#ffffff'
-  bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xffffff'
 
   # Dim colors
   #
