@@ -39,10 +39,10 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'archive' \
   'fasd' \
+  'gpg' \
   'git' \
   'ruby' \
   'python' \
-  'haskell' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
