@@ -3,7 +3,7 @@
 # Executes commands at login pre-zshrc.
 #
 # Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Mark Hinshaw <mahinshaw@gmail.com>
 #
 
 #
@@ -63,5 +63,8 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-
 export PATH="$HOME/.cargo/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+fi

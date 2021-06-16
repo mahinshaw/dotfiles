@@ -18,6 +18,7 @@ dir
 .breakpoints
 .projectile
 .ccls-cache
+.cquery_cached_index
 
 # Compiled source #
 ###################
@@ -139,3 +140,8 @@ cabal.config
 .tern-port
 **/node_modules
 node_modules
+.cache/
+.log/
+
+# Rust
+.cargo

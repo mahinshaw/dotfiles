@@ -3,7 +3,7 @@
 # Executes commands at the start of an interactive session.
 #
 # Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Mark Hinshaw <mahinshaw@gmail.com>
 #
 
 # Source Prezto.
@@ -26,6 +26,15 @@ if [ $commands[kubectl] ]; then
 fi
 if [ $commands[minikube] ]; then
     source <(minikube completion zsh)
+fi
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+# gh cli
+if [ $commands[gh] ]; then
+  source <(gh completion -s zsh)
 fi
 
 # fasd for fast file searching

@@ -3,17 +3,17 @@ source ~/.vimrc
 :imap <C-l> -><Space>
 
 :nmap <Space><Space> :action GotoAction<CR>
-:nmap <Space>bn :action VimMotionNextTab<CR>
-:nmap <Space>bp :action VimMotionPreviousTab<CR>
+:nmap <Space>bn gt
+:nmap <Space>bp gT
 :nmap <Space>ff :action OpenFile<CR>
 :nmap <Space>pc :action GotoClass<CR>
 :nmap <Space>pf :action GotoFile<CR>
 :nmap gi :action GotoImplementation<CR>
 :nmap ,rn :action RenameElement<CR>
 :nmap ,= :action ReformatCode<CR>
-:nmap <C-h> :action VimWindowLeft<CR>
-:nmap <C-j> :action VimWindowDown<CR>
-:nmap <C-k> :action VimWindowUp<CR>
-:nmap <C-l> :action VimWindowRight<CR>
+:nmap <C-h> <C-w><C-h>
+:nmap <C-j> <C-w><C-j>
+:nmap <C-k> <C-w><C-k>
+:nmap <C-l> <C-w><C-l>
 :nmap gcc :action CommentByLineComment<CR>
 :vmap gcc :action CommentByBlockComment<CR>

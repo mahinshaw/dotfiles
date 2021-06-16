@@ -3,7 +3,7 @@
 # Defines environment variables.
 #
 # Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Mark Hinshaw <mahinshaw@gmail.com>
 #
 
 ZDOTDIR=$HOME
@@ -73,14 +73,8 @@ export C_INCLUDE_PATH=/usr/local/include
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--inline-info'
 
-# pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-    # rehash before init
-    eval "$(pyenv init - --no-rehash)"
-fi
-
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 # use psql 11 because azure.
@@ -89,6 +83,12 @@ export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 
-if command -v jenv 1>/dev/null 2>&1; then
-    eval "$(jenv init -)"
-fi
+# if command -v jenv 1>/dev/null 2>&1; then
+#     eval "$(jenv init -)"
+# fi
+
+# vscode
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# emcc
+# export PATH="$PATH:/Users/mhinshaw/tools/emsdk:/Users/mhinshaw/tools/emsdk/upstream/emscripten"

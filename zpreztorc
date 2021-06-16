@@ -3,7 +3,7 @@
 # Sets Prezto options.
 #
 # Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Mark Hinshaw <mahinshaw@gmail.com>
 #
 
 #
@@ -45,7 +45,8 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'syntax-highlighting' \
   'history-substring-search' \
-  'prompt'
+  'prompt' \
+  'node'
 
 #
 # Autosuggestions
