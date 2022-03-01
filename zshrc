@@ -113,5 +113,8 @@ fi
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Azure cli shouldn't collect my data.
+export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT='true'
+
 # get vars that you don't want in git.
 source ~/.zshrc.local

@@ -127,3 +127,10 @@
   path = ~/.gitconfig.user
 [init]
   templatedir = ~/.git_template
+[credential "https://source.developers.google.com"]
+  helper = gcloud.sh
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true

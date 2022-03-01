@@ -1,5 +1,8 @@
 source ~/.vimrc
 
+set NERDTree
+set commentary
+
 :imap <C-l> -><Space>
 
 :nmap <Space><Space> :action GotoAction<CR>
@@ -8,12 +11,19 @@ source ~/.vimrc
 :nmap <Space>ff :action OpenFile<CR>
 :nmap <Space>pc :action GotoClass<CR>
 :nmap <Space>pf :action GotoFile<CR>
+:nmap <Space>pl :action RecentProjectListGroup<CR>
+:nmap <Space>en :action GotoNextError<CR>
+:nmap <Space>ep :action GotoPreviousError<CR>
 :nmap gi :action GotoImplementation<CR>
+:nmap ,gT :action GotoTest<CR>
 :nmap ,rn :action RenameElement<CR>
 :nmap ,= :action ReformatCode<CR>
+:nmap ,uu :action FindUsages<CR>
 :nmap <C-h> <C-w><C-h>
 :nmap <C-j> <C-w><C-j>
 :nmap <C-k> <C-w><C-k>
 :nmap <C-l> <C-w><C-l>
-:nmap gcc :action CommentByLineComment<CR>
-:vmap gcc :action CommentByBlockComment<CR>
+
+:nmap - :NERDTreeFocus
+
+:nmap <Space>pg :action Gradle.ExecuteTask
