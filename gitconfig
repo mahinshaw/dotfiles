@@ -41,9 +41,12 @@
   cp = cherry-pick -x               # grab a change from a branch
 
   # diff
-  d = diff                          # diff unstaged changes
-  dc = diff --cached                # diff staged changes
-  last = diff HEAD^                 # diff last committed change
+  d = diff # diff unstaged changes
+  dc = diff --cached # diff staged changes
+  last = diff HEAD^ # diff last committed change
+
+  # fetch
+  fp = fetch --prune
 
   # log
   l = log --graph --date=short
@@ -123,10 +126,13 @@
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
+[pull]
+  ff = only
 [include]
   path = ~/.gitconfig.user
 [init]
   templatedir = ~/.git_template
+  defaultBranch = master
 [credential "https://source.developers.google.com"]
   helper = gcloud.sh
 [filter "lfs"]
@@ -134,3 +140,8 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[filesystem "AdoptOpenJDK|14|/dev/disk1s1"]
+	timestampResolution = 7000 nanoseconds
+	minRacyThreshold = 0 nanoseconds
+[credential]
+	helper = osxkeychain
