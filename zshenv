@@ -15,7 +15,8 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # Fix issue where path_helper in El Cap runs later than it used to.
-export PATH=$PATH:/usr/local/bin
+# moved homewbrew to zprofile.
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH:/usr/local/bin
 
 # completions in home dir
 fpath=("$HOME/.zfunc" $fpath)
@@ -40,8 +41,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export MANPATH=:/usr/local/opt/erlang/man
 export GOPATH=$HOME/workspace/go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$HOME/workspace/go/bin:$GOROOT
+export PATH=$PATH:$HOME/workspace/go/bin:
 
 # Perl things
 export PATH="$HOME/perl5/bin${PATH:+:${PATH}}";
@@ -74,8 +74,8 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--inline-info'
 
 export NVM_DIR="$HOME/.nvm"
-# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-# [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # use psql 11 because azure.
 export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
@@ -83,12 +83,12 @@ export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 
+#zoxide
+export _ZO_DATA_DIR="$HOME/.local/share"
+
 # if command -v jenv 1>/dev/null 2>&1; then
 #     eval "$(jenv init -)"
 # fi
-
-# vscode
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # emcc
 # export PATH="$PATH:/Users/mhinshaw/tools/emsdk:/Users/mhinshaw/tools/emsdk/upstream/emscripten"

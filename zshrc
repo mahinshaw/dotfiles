@@ -37,14 +37,8 @@ if [ $commands[gh] ]; then
   source <(gh completion -s zsh)
 fi
 
-# fasd for fast file searching
-# only init if installed.
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  eval "$(fasd --init posix-alias zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)" >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
+# zoxide
+eval "$(zoxide init zsh)"
 
 # use direnv https://direnv.net/
 eval "$(direnv hook zsh)"
@@ -66,14 +60,6 @@ fi
 alias ve="vim ~/.vimrc"
 alias ze="vim ~/.zshrc"
 alias zr="source ~/.zshrc"
-
-# jump to recently used items
-alias a='fasd -a' # any
-alias s='fasd -si' # show / search / select
-alias d='fasd -d' # directory
-alias f='fasd -f' # file
-alias z='fasd_cd -d' # cd, same functionality as j in autojump
-alias zz='fasd_cd -d -i' # interactive directory jump
 
 # zmv is cool, lets use it. No quotes and allow wildcards as valid syntax.
 autoload -U zmv
@@ -100,7 +86,7 @@ alias trig='tree -I $(_gitignore_to_regex)'
 alias fsi='fsharpi --nologo --consolecolors'
 
 # Nodejs
-alias node="env NODE_NO_READLINE=1 rlwrap node"
+# alias node="env NODE_NO_READLINE=1 rlwrap node"
 
 #Browser
 if [[ "$OSTYPE" == "darwin"* ]]; then
