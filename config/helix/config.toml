@@ -1,0 +1,10 @@
+# https://docs.helix-editor.com/configuration.html
+theme = "autumn"
+
+[editor]
+# line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
