@@ -38,15 +38,23 @@ if [ $commands[gh] ]; then
 fi
 
 # zoxide
-eval "$(zoxide init zsh)"
+if [ -x "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh)"
+fi
 
 # use direnv https://direnv.net/
-eval "$(direnv hook zsh)"
+if [ -x "$(command -v direnv)" ]; then
+  eval "$(direnv hook zsh)"
+fi
 
 # init opam env
 if [ -x "$(command -v opam)" ]; then
   eval `opam config env`;
 fi
+
+# nvm
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # ================ALIASES===================
 # use macvim in the terminal if it exits
@@ -101,6 +109,3 @@ fi
 
 # Azure cli shouldn't collect my data.
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT='true'
-
-# get vars that you don't want in git.
-source ~/.zshrc.local

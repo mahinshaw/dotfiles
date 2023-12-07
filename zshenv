@@ -6,6 +6,9 @@
 #   Mark Hinshaw <mahinshaw@gmail.com>
 #
 
+# uncomment this and last line for profiling
+# zmodload zsh/zprof
+
 ZDOTDIR=$HOME
 export ZDOTDIR
 
@@ -36,26 +39,11 @@ else
 fi
 
 # local tools
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin
-export PATH=$PATH:$HOME/.cargo/bin
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-export MANPATH=:/usr/local/opt/erlang/man
-export GOPATH=$HOME/workspace/go
-export PATH=$PATH:$HOME/workspace/go/bin:
+# fails as it's not yet on the path?
+# export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+export GOPATH="$HOME/workspace/go"
 
-# Perl things
-export PATH="$HOME/perl5/bin${PATH:+:${PATH}}";
-export PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}";
-export PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}";
-export PERL_MB_OPT="--install_base \"$HOME/perl5\"";
-export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5";
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Confluent tools
-export CONFLUENT_HOME="$HOME/tools/confluent-5.0.0"
-export CONFLUENT_CURRENT="$CONFLUENT_HOME/var"
-export PATH="$CONFLUENT_HOME/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/workspace/go/bin:$PATH"
 
 # .Net and mono
 export MONO_GAC_PREFIX="/usr/local";
@@ -74,21 +62,14 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--inline-info'
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-#[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# use psql 11 because azure.
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
-
-# jenv
-export PATH="$HOME/.jenv/bin:$PATH"
 
 #zoxide
 export _ZO_DATA_DIR="$HOME/.local/share"
 
-# if command -v jenv 1>/dev/null 2>&1; then
-#     eval "$(jenv init -)"
-# fi
+#postgresql
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
-# emcc
-# export PATH="$PATH:/Users/mhinshaw/tools/emsdk:/Users/mhinshaw/tools/emsdk/upstream/emscripten"
+# get vars that you don't want in git.
+source ~/.zshenv.local
+
+# zprof
