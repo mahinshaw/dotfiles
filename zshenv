@@ -61,13 +61,14 @@ export C_INCLUDE_PATH=/usr/local/include
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_OPTS='--inline-info'
 
-export NVM_DIR="$HOME/.nvm"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 #zoxide
 export _ZO_DATA_DIR="$HOME/.local/share"
 
 #postgresql
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/libexec/bin:$PATH"
 
 # get vars that you don't want in git.
 source ~/.zshenv.local
