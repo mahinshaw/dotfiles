@@ -11,6 +11,8 @@ eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/insta
 #install brew bundle Brewfile
 brew bundle
 
+## TODO - set brew `bin` on path for this script.
+
 # install rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 

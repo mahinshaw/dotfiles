@@ -6,6 +6,11 @@
 #   Mark Hinshaw <mahinshaw@gmail.com>
 #
 
+# return early if it's intellij
+if [ -n "$INTELLIJ_ENVIRONMENT_READER" ]; then
+  exit 0
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -57,11 +62,14 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 # ================ALIASES===================
 # use macvim in the terminal if it exits
-mvim --version > /dev/null 2>&1
-MACVIM_INSTALLED=$?
-if  [ $MACVIM_INSTALLED -eq 0 ]; then
-  alias vim="mvim -v"
+nvim --version > /dev/null 2>&1
+NVIM_INSTALLED=$?
+if  [ $NVIM_INSTALLED -eq 0 ]; then
+  alias vim="nvim"
 fi
+
+# use gfind over find
+alias find="/opt/homebrew/bin/gfind"
 
 # *rc file editing
 alias ve="vim ~/.vimrc"
@@ -108,3 +116,6 @@ fi
 
 # Azure cli shouldn't collect my data.
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT='true'
+
+# get vars that you don't want in git.
+source ~/.zshrc.local

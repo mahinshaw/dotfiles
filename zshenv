@@ -67,8 +67,12 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 #zoxide
 export _ZO_DATA_DIR="$HOME/.local/share"
 
+# mojo lang
+export MODULAR_HOME="/Users/mhinshaw/.modular"
+export PATH="/Users/mhinshaw/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+
 #postgresql
-export PATH="/opt/homebrew/opt/postgresql@16/libexec/bin:$PATH"
+# export PATH="/opt/homebrew/opt/postgresql@16/libexec/bin:$PATH"
 
 # get vars that you don't want in git.
 source ~/.zshenv.local
