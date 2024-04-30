@@ -9,7 +9,7 @@ eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/insta
 # cd ~/.dotfiles
 
 #install brew bundle Brewfile
-brew bundle
+brew bundle --file="$HOME/.dotfiles/Brewfile"
 
 ## TODO - set brew `bin` on path for this script.
 

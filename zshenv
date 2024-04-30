@@ -25,8 +25,10 @@ export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH:/usr/local/bin
 fpath=("$HOME/.zfunc" $fpath)
 
 # environment variables.
-# X11
-# export PATH=$PATH:/opt/X11/bin
+
+#Homebrew configs
+export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/Brewfile"
+
 # JVM
 if [[ "$OSTYPE" == darwin* ]]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
@@ -68,8 +70,8 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export _ZO_DATA_DIR="$HOME/.local/share"
 
 # mojo lang
-export MODULAR_HOME="/Users/mhinshaw/.modular"
-export PATH="/Users/mhinshaw/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+export MODULAR_HOME="$HOME/.modular"
+export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 #postgresql
 # export PATH="/opt/homebrew/opt/postgresql@16/libexec/bin:$PATH"
