@@ -140,7 +140,7 @@ require("lazy").setup({
     })
   end
 },
-
+{"tpope/vim-commentary"},
 -- { "folke/neoconf.nvim", cmd = "Neoconf" },
 -- "folke/neodev.nvim",
 })
