@@ -11,6 +11,11 @@ if [ -n "$INTELLIJ_ENVIRONMENT_READER" ]; then
   exit 0
 fi
 
+# Add homebrew-installed package completions to fpath
+if command -v brew > /dev/null; then
+    fpath+=$(brew --prefix)/share/zsh/site-functions
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -31,10 +36,6 @@ if [ $commands[kubectl] ]; then
 fi
 if [ $commands[minikube] ]; then
     source <(minikube completion zsh)
-fi
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
 fi
 
 # gh cli
@@ -66,6 +67,15 @@ nvim --version > /dev/null 2>&1
 NVIM_INSTALLED=$?
 if  [ $NVIM_INSTALLED -eq 0 ]; then
   alias vim="nvim"
+fi
+
+#alias python to `uv run python`
+if [ $commands[uv] ]; then
+  alias pip="uv pip"
+  alias python="uv run python"
+else
+  alias python="python3"
+  alias pip="pip3"
 fi
 
 # use gfind over find

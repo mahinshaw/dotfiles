@@ -75,12 +75,22 @@ require("lazy").setup({
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 	end,
 	},
+  {
+    'nvim-telescope/telescope-project.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    },
+    init = function()
+      require('telescope').load_extension('project')
+      vim.keymap.set('n', '<leader>pl', require('telescope').extensions.project.project, {})
+    end,
+  },
 	{
-	'nvim-lualine/lualine.nvim',
-	dependencies = { 'nvim-tree/nvim-web-devicons' },
-	opts = {
-		theme = 'gruvbox'
-	}
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      theme = 'gruvbox'
+   }
 	}
 	,
 	{ "alexghergh/nvim-tmux-navigation" },
@@ -143,5 +153,7 @@ require("lazy").setup({
 {"tpope/vim-commentary"},
 -- { "folke/neoconf.nvim", cmd = "Neoconf" },
 -- "folke/neodev.nvim",
+--
+{"github/copilot.vim"}
 })
 

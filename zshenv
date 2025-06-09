@@ -24,6 +24,9 @@ export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH:/usr/local/bin
 # completions in home dir
 fpath=("$HOME/.zfunc" $fpath)
 
+# homebrew compeltions
+fpath=("/opt/homebrew/share/zsh/site-functions" $fpath)
+
 # environment variables.
 
 #Homebrew configs
@@ -72,6 +75,15 @@ export _ZO_DATA_DIR="$HOME/.local/share"
 # mojo lang
 export MODULAR_HOME="$HOME/.modular"
 export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+
+# export UV_MANAGED_PYTHON=true
+
+#dotnet
+export PATH="$HOME/.dotnet/tools:$PATH"
+
+# azure dev cli
+# no thanks on telemetry
+AZURE_DEV_COLLECT_TELEMETRY=no
 
 #postgresql
 # export PATH="/opt/homebrew/opt/postgresql@16/libexec/bin:$PATH"
