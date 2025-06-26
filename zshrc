@@ -67,6 +67,7 @@ nvim --version > /dev/null 2>&1
 NVIM_INSTALLED=$?
 if  [ $NVIM_INSTALLED -eq 0 ]; then
   alias vim="nvim"
+  alias vi="nvim"
 fi
 
 #alias python to `uv run python`
@@ -129,3 +130,43 @@ export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT='true'
 
 # get vars that you don't want in git.
 source ~/.zshrc.local
+
+# make sure zeillij tabs have directories as names
+# https://www.reddit.com/r/zellij/comments/10skez0/does_zellij_support_changing_tabs_name_according/
+# https://www.reddit.com/r/zellij/comments/1bzycys/pane_frame_title_question/
+zellij_tab_name_update() {
+  if [[ -n $ZELLIJ ]]; then
+    tab_name=''
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        tab_name+=$(basename "$(git rev-parse --show-toplevel)")/
+        tab_name+=$(git rev-parse --show-prefix)
+        tab_name=${tab_name%/}
+    else
+        tab_name=$PWD
+            if [[ $tab_name == $HOME ]]; then
+         	tab_name="~"
+             else
+         	tab_name=${tab_name##*/}
+             fi
+    fi
+    command nohup zellij action rename-tab $tab_name >/dev/null 2>&1
+    #command nohup zellij action rename-pane $tab_name >/dev/null 2>&1
+  fi
+}
+# zellij_tab_name_update
+# chpwd_functions+=(zellij_tab_name_update)
+
+# use the last session if it exists
+# export ZELLIJ_AUTO_START=true
+# shut down the shell when zellij exits
+# export ZELLIJ_AUTO_EXIT=true
+
+#run zellij
+# eval "$(zellij setup --generate-auto-start zsh)"
+if [[ -z "$ZELLIJ" ]]; then
+  zellij attach -c root
+  
+  if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+    exit 0
+  fi
+fi

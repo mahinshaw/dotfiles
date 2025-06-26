@@ -50,12 +50,6 @@ export GOPATH="$HOME/workspace/go"
 
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/workspace/go/bin:$PATH"
 
-# .Net and mono
-export MONO_GAC_PREFIX="/usr/local";
-
-# OPAM configuration
-. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true;
-
 # build related
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export C_INCLUDE_PATH=/usr/local/include
@@ -63,7 +57,8 @@ export C_INCLUDE_PATH=/usr/local/include
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+# export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs  --hidden'
 export FZF_DEFAULT_OPTS='--inline-info'
 
 export VOLTA_HOME="$HOME/.volta"
