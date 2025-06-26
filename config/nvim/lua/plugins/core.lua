@@ -54,23 +54,19 @@ return {
   --   end,
   -- },
   {
-    "SuperBo/fugit2.nvim",
-    build = false,
-    opts = {
-      width = 100,
-    },
+    "NeogitOrg/neogit",
     dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "nvim-lua/plenary.nvim",
-      {
-        "chrisgrieser/nvim-tinygit", -- optional: for Github PR view
-        dependencies = { "stevearc/dressing.nvim" },
-      },
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed.
+      "ibhagwan/fzf-lua", -- optional
+      -- "folke/snacks.nvim",             -- optional
     },
-    cmd = { "Fugit2", "Fugit2Diff", "Fugit2Graph" },
     keys = {
-      { "<leader>G", mode = "n", "<cmd>Fugit2<cr>", desc = "Open fugit2" },
+      { "<leader>G", mode = "n", "<cmd>Neogit<cr>", desc = "Open Neogit" },
+      -- { "<leader>gd", mode = "n", "<cmd>Neogit kind=diff<cr>", desc = "Open Neogit diff" },
+      -- { "<leader>gc", mode = "n", "<cmd>Neogit kind=commit<cr>", desc = "Open Neogit commit" },
     },
   },
 }

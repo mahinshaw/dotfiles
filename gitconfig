@@ -90,13 +90,13 @@
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
   prompt = false
-[mergetool "mvimdiff"]
-  cmd="mvim -c 'Gdiff' $MERGED"     # use fugitive.vim for 3-way merge
   keepbackup=false
+[mergetool "diffview"]
+  cmd=nvim -n -c "DiffviewOpen" "$MERGED"     # use diffview.nvim for 3-way merge
 [merge]
   summary = true
   verbosity = 1
-  tool = mvimdiff
+  tool = diffview
 [apply]
   whitespace = nowarn
 [branch]
@@ -107,7 +107,7 @@
   default = simple
 [core]
   autocrlf = false
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore
 [advice]
   statusHints = false
