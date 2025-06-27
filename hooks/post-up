@@ -1,17 +1,1 @@
-#!/bin/sh
-
-# Install vim-plug
-if [ ! -e ~/.vim/autoload/plug.vim ]; then
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-# Have vim-plug install all plugins
-vim +PlugInstall +qall -
-
-# Install spacemacs to .emacs.d
-if [ ! -d ~/.emacs.d ]; then
-  git clone https://github.com/mahinshaw/spacemacs.git ~/.emacs.d
-  cd .emacs.d && git checkout develop && git remote add checkversion https://github.com/syl20bnr/spacemacs.git
-  cd ~/
-fi
+#!/usr/bin/env bash
