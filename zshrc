@@ -154,7 +154,7 @@ zellij_tab_name_update() {
   fi
 }
 # zellij_tab_name_update
-# chpwd_functions+=(zellij_tab_name_update)
+chpwd_functions+=(zellij_tab_name_update)
 
 # use the last session if it exists
 # export ZELLIJ_AUTO_START=true
