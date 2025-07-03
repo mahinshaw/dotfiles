@@ -18,6 +18,12 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Add additional directories to load prezto modules from
 # zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+# see https://github.com/mattmc3/prezto-prompt-contrib
+# and https://github.com/sorin-ionescu/prezto/issues/1887
+zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-prompt-contrib
+
+# Allow module overrides when pmodule-dirs causes module name collisions
+zstyle ':prezto:load' pmodule-allow-overrides 'yes'
 
 # Set the Zsh modules to load (man zshmodules).
 # zstyle ':prezto:load' zmodule 'attr' 'stat'
@@ -121,7 +127,8 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'cloud' '>'
+# zstyle ':prezto:module:prompt' theme 'cloud' '>'
+zstyle ':prezto:module:prompt' theme 'starship'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)

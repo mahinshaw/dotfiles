@@ -59,6 +59,10 @@ keybinds clear-defaults=true {
       bind "o" { SwitchToMode "session"; }
       bind "s" { NewPane "down"; SwitchToMode "locked"; }
       bind "v" { NewPane "right"; SwitchToMode "locked"; }
+      bind "Shift h" { Resize "Increase left"; }
+      bind "Shift j" { Resize "Increase down"; }
+      bind "Shift k" { Resize "Increase up"; }
+      bind "Shift l" { Resize "Increase right"; }
     }
     pane {
         bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
@@ -198,6 +202,7 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
+        bind "Super j" { ToggleFloatingPanes; }
         bind "Alt h" { MoveFocusOrTab "left"; }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt j" { MoveFocus "down"; }
