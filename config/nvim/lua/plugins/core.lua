@@ -10,23 +10,42 @@ return {
   { "sainnhe/sonokai" },
   { "rebelot/kanagawa.nvim" },
   {
-    "swaits/zellij-nav.nvim",
-    -- lazy = true,
-    -- event = "VeryLazy",
+    "aserowy/tmux.nvim",
     keys = {
-      { "<c-h>", "<cmd>ZellijNavigateLeftTab<cr>", { silent = true, desc = "navigate left or tab" } },
-      { "<c-j>", "<cmd>ZellijNavigateDown<cr>", { silent = true, desc = "navigate down" } },
-      { "<c-k>", "<cmd>ZellijNavigateUp<cr>", { silent = true, desc = "navigate up" } },
-      { "<c-l>", "<cmd>ZellijNavigateRightTab<cr>", { silent = true, desc = "navigate right or tab" } },
+      { "<C-h>", mode = "n", "<cmd>lua require'tmux'.move_left()<cr>", desc = "Navigate left pane" },
+      { "<C-j>", mode = "n", "<cmd>lua require'tmux'.move_bottom()<cr>", desc = "Navigate bottom pane" },
+      { "<C-k>", mode = "n", "<cmd>lua require'tmux'.move_top()<cr>", desc = "Navigate top pane" },
+      { "<C-l>", mode = "n", "<cmd>lua require'tmux'.move_right()<cr>", desc = "Navigate right pane" },
     },
-    opts = {},
+    opts = {
+      copy_sync = {
+        enable = true,
+        sync_clipboard = true,
+      },
+      navigation = {
+        cycle_navigation = true,
+        enable_default_keybindings = true,
+        persist_zoom = false,
+      },
+      resize = {
+        enable_default_keybindings = true,
+        -- sets resize steps for x axis
+        resize_step_x = 1,
+        -- sets resize steps for y axis
+        resize_step_y = 1,
+      },
+      swap = {
+        enable_default_keybindings = false,
+      },
+    },
   },
   {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-
+      {
+        "sindrets/diffview.nvim",
+      }, -- optional - Diff integration
       -- Only one of these is needed.
       "ibhagwan/fzf-lua", -- optional
       -- "folke/snacks.nvim",             -- optional

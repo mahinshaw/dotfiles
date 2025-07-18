@@ -28,6 +28,7 @@ fpath=("$HOME/.zfunc" $fpath)
 fpath=("/opt/homebrew/share/zsh/site-functions" $fpath)
 
 # environment variables.
+export XDG_CONFIG_HOME="$HOME/.config"
 
 #Homebrew configs
 export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/Brewfile"

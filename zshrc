@@ -163,10 +163,10 @@ chpwd_functions+=(zellij_tab_name_update)
 
 #run zellij
 # eval "$(zellij setup --generate-auto-start zsh)"
-if [[ -z "$ZELLIJ" ]]; then
-  zellij attach -c root
-  
-  if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-    exit 0
-  fi
-fi
+# if [[ -z "$ZELLIJ" ]]; then
+#   zellij attach -c root
+#
+#   if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+#     exit 0
+#   fi
+# fi
