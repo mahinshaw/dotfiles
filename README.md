@@ -17,11 +17,13 @@ Install [Neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 
 Change the shell to Z-Shell
 
-    chsh -s /bin/zsh
+    chsh -s /bin/zsh # or /opt/homebrew/bin/zsh
+
+Note: if you want to use Homebrew zshell, you need to update the /etc/shells file to include the path to the Homebrew zsh binary, which is usually located at `/usr/local/bin/zsh` or `/opt/homebrew/bin/zsh` on Apple Silicon Macs.
 
 ## Recommended
 
-Install [iTerm2](www.iterm2.com)
+Install [iTerm2](www.iterm2.com) or [Wezterm](https://wezterm.org/)
 
 ## Install
 

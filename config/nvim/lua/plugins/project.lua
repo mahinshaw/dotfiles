@@ -4,7 +4,7 @@ local pick = nil
 
 pick = function()
   local fzf_lua = require("fzf-lua")
-  local project = require("project_nvim.project")
+  local project = require("project_nvim.api")
   local history = require("project_nvim.utils.history")
   local results = history.get_recent_projects()
   local utils = require("fzf-lua.utils")
