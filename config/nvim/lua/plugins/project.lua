@@ -108,7 +108,6 @@ return {
       { "<leader>fp", pick, desc = "Projects" },
     },
   },
-
   {
     "folke/snacks.nvim",
     optional = true,
