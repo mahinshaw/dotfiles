@@ -4,8 +4,8 @@ local pick = nil
 
 pick = function()
   local fzf_lua = require("fzf-lua")
-  local project = require("project_nvim.api")
-  local history = require("project_nvim.utils.history")
+  local project = require("project.api")
+  local history = require("project.utils.history")
   local results = history.get_recent_projects()
   local utils = require("fzf-lua.utils")
 
@@ -88,8 +88,8 @@ return {
     },
     event = "VeryLazy",
     config = function(_, opts)
-      require("project_nvim").setup(opts)
-      local history = require("project_nvim.utils.history")
+      require("project").setup(opts)
+      local history = require("project.utils.history")
       history.delete_project = function(project)
         for k, v in pairs(history.recent_projects) do
           if v == project.value then
