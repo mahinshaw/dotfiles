@@ -4,3 +4,6 @@
 
 vim.keymap.set("n", "vv", "<C-w>v")
 vim.keymap.set("n", "ss", "<C-w>s")
+
+vim.keymap.set("n", "0", "^", { noremap = true })
+vim.keymap.set("n", "^", "0", { noremap = true })

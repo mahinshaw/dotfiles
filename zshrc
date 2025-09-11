@@ -43,6 +43,10 @@ if [ $commands[gh] ]; then
   source <(gh completion -s zsh)
 fi
 
+if [ $commands[fzf] ]; then
+  source <(fzf --zsh)
+fi
+
 # zoxide
 if [ -x "$(command -v zoxide)" ]; then
   eval "$(zoxide init zsh)"
