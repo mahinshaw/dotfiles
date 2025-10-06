@@ -17,6 +17,7 @@ return {
     },
     opts = {
       manual_mode = false,
+      fzf_lua = { enabled = true },
     },
     event = "VeryLazy",
     config = function(_, opts)
