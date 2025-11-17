@@ -85,3 +85,6 @@ AZURE_DEV_COLLECT_TELEMETRY=no
 source ~/.zshenv.local
 
 # zprof
+
+# claude - https://code.claude.com/docs/en/setup
+export DISABLE_AUTOUPDATER=1
