@@ -10,3 +10,5 @@ vim.keymap.set("n", "^", "0", { noremap = true })
 
 -- See autocmds.lua for Filetype specific mappings for arrow insertion.
 vim.keymap.set("i", "<C-l>", "-> ", { noremap = true })
+
+vim.keymap.set("n", "//", ":nohlsearch<CR>", { noremap = true, silent = true })

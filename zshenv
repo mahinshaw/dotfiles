@@ -88,3 +88,4 @@ source ~/.zshenv.local
 
 # claude - https://code.claude.com/docs/en/setup
 export DISABLE_AUTOUPDATER=1
+export CLAUDE_CONFIG_DIR="$HOME/.claude"
