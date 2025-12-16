@@ -57,13 +57,10 @@ if [ -x "$(command -v direnv)" ]; then
   eval "$(direnv hook zsh)"
 fi
 
-# init opam env
-if [ -x "$(command -v opam)" ]; then
-  eval `opam config env`;
+# init mise
+if [ -x "$(command -v mise)" ]; then
+  eval "$(mise activate zsh)"
 fi
-
-# volta is set here as it's clobbered by zprezto/init
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # ================ALIASES===================
 # use macvim in the terminal if it exits

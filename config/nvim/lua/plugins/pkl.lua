@@ -11,6 +11,9 @@ return {
         end,
       },
       "L3MON4D3/LuaSnip",
+      {
+        "mason-org/mason-lspconfig.nvim",
+      },
     },
     build = function()
       require("pkl-neovim").init()
@@ -22,13 +25,14 @@ return {
       -- Set up snippets.
       require("luasnip.loaders.from_snipmate").lazy_load()
 
-      -- -- Configure pkl-lsp
-      -- vim.g.pkl_neovim = {
-      --   start_command = { "java", "-jar", "/path/to/pkl-lsp.jar" },
-      --   -- or if pkl-lsp is installed with brew:
-      --   -- start_command = { "pkl-lsp" },
-      --   pkl_cli_path = "/path/to/pkl",
-      -- }
+      -- Configure pkl-lsp
+      vim.g.pkl_neovim = {
+        -- start_command = { "java", "-jar", "/path/to/pkl-lsp.jar" },
+        -- or if pkl-lsp is installed with brew:
+        start_command = { "pkl-lsp" },
+        -- Need to ensure this is installed via mason
+        pkl_cli_path = "~/.local/share/nvim/mason/bin/pkl-cli",
+      }
     end,
   },
 }

@@ -1,0 +1,9 @@
+[tools]
+bun = "latest"
+node = "24"
+"npm:@github/copilot-language-server" = "latest"
+"npm:prettier" = "latest"
+pnpm = "latest"
+ruff = "latest"
+uv = "latest"
+yarn = "latest"

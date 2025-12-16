@@ -36,10 +36,6 @@ export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/Brewfile"
 # JVM
 if [[ "$OSTYPE" == darwin* ]]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
-    # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
-    export SCALA_HOME=/usr/local/Cellar/scala/libexec
-    export GROOVY_HOME=/usr/local/Cellar/groovy/libexec
-    export JAVA_8=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
 else
     export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 fi
@@ -58,9 +54,6 @@ export C_INCLUDE_PATH=/usr/local/include
 # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs  --hidden'
 export FZF_DEFAULT_OPTS='--inline-info'
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 #zoxide
 export _ZO_DATA_DIR="$HOME/.local/share"
