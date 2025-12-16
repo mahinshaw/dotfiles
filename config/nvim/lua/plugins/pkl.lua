@@ -11,15 +11,12 @@ return {
         end,
       },
       "L3MON4D3/LuaSnip",
-      {
-        "mason-org/mason-lspconfig.nvim",
-      },
+      -- {
+      --   "mason-org/mason-lspconfig.nvim",
+      -- },
     },
     build = function()
       require("pkl-neovim").init()
-
-      -- Set up syntax highlighting.
-      vim.cmd("TSInstall pkl")
     end,
     config = function()
       -- Set up snippets.
@@ -34,5 +31,19 @@ return {
         pkl_cli_path = "~/.local/share/nvim/mason/bin/pkl-cli",
       }
     end,
+  },
+  -- ensure pkl parser is installed for treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "pkl",
+      },
+    },
+  },
+  -- Ensure pkl-lsp is installed via mason
+  {
+    "mason.nvim",
+    opts = { ensure_installed = { "pkl-lsp" } },
   },
 }
