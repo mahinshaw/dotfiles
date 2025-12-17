@@ -4,16 +4,7 @@ return {
     lazy = true,
     ft = "pkl",
     dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter",
-        build = function(_)
-          vim.cmd("TSUpdate")
-        end,
-      },
       "L3MON4D3/LuaSnip",
-      -- {
-      --   "mason-org/mason-lspconfig.nvim",
-      -- },
     },
     build = function()
       require("pkl-neovim").init()

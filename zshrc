@@ -43,6 +43,8 @@ if [ $commands[gh] ]; then
   source <(gh completion -s zsh)
 fi
 
+# disable fzf key bindings to avoid conflicts with tv
+FZF_CTRL_R_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
 if [ $commands[fzf] ]; then
   source <(fzf --zsh)
 fi
@@ -62,8 +64,13 @@ if [ -x "$(command -v mise)" ]; then
   eval "$(mise activate zsh)"
 fi
 
+# init tv
+if [ -x "$(command -v tv)" ]; then
+  eval "$(tv init zsh)"
+fi
+
 # ================ALIASES===================
-# use macvim in the terminal if it exits
+# nvim all the things
 nvim --version > /dev/null 2>&1
 NVIM_INSTALLED=$?
 if  [ $NVIM_INSTALLED -eq 0 ]; then
@@ -71,20 +78,11 @@ if  [ $NVIM_INSTALLED -eq 0 ]; then
   alias vi="nvim"
 fi
 
-#alias python to `uv run python`
-if [ $commands[uv] ]; then
-  alias pip="uv pip"
-  alias python="uv run python"
-else
-  alias python="python3"
-  alias pip="pip3"
-fi
-
 # use gfind over find
 alias find="/opt/homebrew/bin/gfind"
 
 # *rc file editing
-alias ve="vim ~/.vimrc"
+alias ve="vim ~/.config/nvim/init.lua"
 alias ze="vim ~/.zshrc"
 alias zr="source ~/.zshrc"
 
@@ -109,12 +107,6 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 alias _gitignore_to_regex="(cat .gitignore 2> /dev/null || echo '') | sed 's/^\///' | tr '\n' '|'"
 alias trig='tree -I $(_gitignore_to_regex)'
 
-# Mono
-alias fsi='fsharpi --nologo --consolecolors'
-
-# Nodejs
-# alias node="env NODE_NO_READLINE=1 rlwrap node"
-
 #Browser
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
@@ -123,51 +115,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   alias canary-debug='canary --remote-debugging-port=9222 &'
 fi
 
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Azure cli shouldn't collect my data.
-export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT='true'
-
 # get vars that you don't want in git.
 source ~/.zshrc.local
-
-# make sure zeillij tabs have directories as names
-# https://www.reddit.com/r/zellij/comments/10skez0/does_zellij_support_changing_tabs_name_according/
-# https://www.reddit.com/r/zellij/comments/1bzycys/pane_frame_title_question/
-zellij_tab_name_update() {
-  if [[ -n $ZELLIJ ]]; then
-    tab_name=''
-    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-        tab_name+=$(basename "$(git rev-parse --show-toplevel)")/
-        tab_name+=$(git rev-parse --show-prefix)
-        tab_name=${tab_name%/}
-    else
-        tab_name=$PWD
-            if [[ $tab_name == $HOME ]]; then
-         	tab_name="~"
-             else
-         	tab_name=${tab_name##*/}
-             fi
-    fi
-    command nohup zellij action rename-tab $tab_name >/dev/null 2>&1
-    #command nohup zellij action rename-pane $tab_name >/dev/null 2>&1
-  fi
-}
-# zellij_tab_name_update
-chpwd_functions+=(zellij_tab_name_update)
-
-# use the last session if it exists
-# export ZELLIJ_AUTO_START=true
-# shut down the shell when zellij exits
-# export ZELLIJ_AUTO_EXIT=true
-
-#run zellij
-# eval "$(zellij setup --generate-auto-start zsh)"
-# if [[ -z "$ZELLIJ" ]]; then
-#   zellij attach -c root
-#
-#   if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-#     exit 0
-#   fi
-# fi

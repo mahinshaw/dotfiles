@@ -69,7 +69,10 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 
 # azure dev cli
 # no thanks on telemetry
-AZURE_DEV_COLLECT_TELEMETRY=no
+export AZURE_DEV_COLLECT_TELEMETRY=no
+
+# Azure cli shouldn't collect my data.
+export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT='true'
 
 #postgresql
 # export PATH="/opt/homebrew/opt/postgresql@16/libexec/bin:$PATH"
