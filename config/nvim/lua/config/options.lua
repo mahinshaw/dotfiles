@@ -6,7 +6,7 @@ vim.opt.relativenumber = false
 -- Add any additional options here
 
 -- Set the default picker
-vim.g.lazyvim_picker = "fzf"
+vim.g.lazyvim_picker = "snacks"
 
 -- LSP Server to use for Python.
 -- Set to "basedpyright" to use basedpyright instead of pyright.

@@ -1,9 +1,11 @@
 [tools]
 bun = "latest"
+cargo-binstall = "latest"
 node = "24"
 "npm:@github/copilot-language-server" = "latest"
 "npm:prettier" = "latest"
 pnpm = "latest"
+python = "latest"
 ruff = "latest"
 uv = "latest"
 yarn = "latest"

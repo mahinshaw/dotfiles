@@ -7,8 +7,8 @@ return {
         "sindrets/diffview.nvim",
       }, -- optional - Diff integration
       -- Only one of these is needed.
-      "ibhagwan/fzf-lua", -- optional
-      -- "folke/snacks.nvim",             -- optional
+      -- "ibhagwan/fzf-lua", -- optional
+      "folke/snacks.nvim", -- optional
     },
     keys = {
       { "<leader>G", mode = "n", "<cmd>Neogit<cr>", desc = "Open Neogit" },

@@ -6,6 +6,14 @@ return {
     opts = {
       keymaps = {
         ["q"] = { "actions.close", mode = "n" },
+        -- don't use C-s for splits.
+        ["<C-s>"] = false,
+        ["<C-r>"] = "actions.refresh",
+        ["vv"] = { "actions.select", opts = { vertical = true } },
+        ["ss"] = { "actions.select", opts = { horizontal = true } },
+        -- Remap to not override split navigation
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
       },
     },
     -- Optional dependencies
