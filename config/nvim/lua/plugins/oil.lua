@@ -4,7 +4,24 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
+      columns = {
+        "icon",
+        -- "permissions",
+        -- "size",
+        -- "mtime",
+      },
       keymaps = {
+        ["gd"] = {
+          desc = "Toggle file detail view",
+          callback = function()
+            oil_detail = not oil_detail
+            if oil_detail then
+              require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+            else
+              require("oil").set_columns({ "icon" })
+            end
+          end,
+        },
         ["q"] = { "actions.close", mode = "n" },
         -- don't use C-s for splits.
         ["<C-s>"] = false,
