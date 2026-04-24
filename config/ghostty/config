@@ -1,0 +1,3 @@
+theme = sonokai
+font-family = SauceCodePro Nerd Font
+shell-integration = zsh
