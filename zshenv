@@ -32,6 +32,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 #Homebrew configs
 export HOMEBREW_BUNDLE_FILE="$HOME/.dotfiles/Brewfile"
+export HOMEBREW_NO_ANALYTICS=1
 
 # JVM
 if [[ "$OSTYPE" == darwin* ]]; then
