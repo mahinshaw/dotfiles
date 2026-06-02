@@ -145,3 +145,5 @@ node_modules
 
 # Rust
 .cargo
+
+**/.claude/settings.local.json
