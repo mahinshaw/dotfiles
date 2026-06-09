@@ -71,9 +71,7 @@ fi
 
 # ================ALIASES===================
 # nvim all the things
-nvim --version > /dev/null 2>&1
-NVIM_INSTALLED=$?
-if  [ $NVIM_INSTALLED -eq 0 ]; then
+if [ $commands[nvim] ]; then
   alias vim="nvim"
   alias vi="nvim"
 fi
