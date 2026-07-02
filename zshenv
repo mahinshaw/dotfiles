@@ -6,8 +6,69 @@
 #   Mark Hinshaw <mahinshaw@gmail.com>
 #
 
-# uncomment this and last line for profiling
-# zmodload zsh/zprof
+# shell startup profiling - see ~/.dotfiles/README.md or `zprofile-startup`
+if [[ -n "$ZSH_PROFILE_STARTUP" ]]; then
+  zmodload zsh/zprof
+fi
+
+if [[ -n "$ZSH_XTRACE_STARTUP" ]]; then
+  zmodload zsh/datetime
+  setopt prompt_subst
+  PS4=$'+$EPOCHREALTIME %N:%i> '
+  exec 3>&2 2>"${ZSH_XTRACE_LOG:-/tmp/zsh_startup_trace.$$}"
+  setopt xtrace
+fi
+
+# Cache generated init/completion scripts and one-off command output so we
+# don't fork a slow binary (or pay this machine's EDR per-exec scan tax) on
+# every new shell. Regenerates when the cache is missing, older than
+# max_age seconds, or the source binary is newer. Defined here (zshenv) so
+# both zshenv and zshrc can use it.
+_zsh_cache_file() {
+  emulate -L zsh
+  zmodload zsh/datetime zsh/stat 2>/dev/null
+
+  local name=$1 max_age=$2 ext=$3
+  shift 3
+  (( $# )) || return 1
+
+  local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-init"
+  local cache_file="$cache_dir/$name.$ext"
+  local mtime=0 bin_mtime=0
+  local bin_path="${commands[$1]}"
+
+  [[ -d "$cache_dir" ]] || command mkdir -p "$cache_dir"
+  [[ -s "$cache_file" ]] && zstat -A mtime +mtime "$cache_file" 2>/dev/null
+  [[ -n "$bin_path" ]] && zstat -A bin_mtime +mtime "$bin_path" 2>/dev/null
+
+  if (( mtime == 0 || bin_mtime > mtime || EPOCHSECONDS - mtime > max_age )); then
+    "$@" >| "$cache_file" 2>/dev/null
+  fi
+
+  [[ -s "$cache_file" ]] || return 1
+  print -r -- "$cache_file"
+}
+
+# cache lifetime for generated init/completion scripts and values (7 days)
+typeset -gi _ZSH_INIT_CACHE_AGE=604800
+
+# source a cached init/completion script, regenerating it as needed
+_zsh_cached_init() {
+  local name=$1 max_age=$2
+  shift 2
+  local cache_file
+  cache_file=$(_zsh_cache_file "$name" "$max_age" zsh "$@") || return 1
+  source "$cache_file"
+}
+
+# print a cached command's stdout (e.g. for use in `$(...)`), regenerating as needed
+_zsh_cached_value() {
+  local name=$1 max_age=$2
+  shift 2
+  local cache_file
+  cache_file=$(_zsh_cache_file "$name" "$max_age" val "$@") || return 1
+  print -rn -- "$(<"$cache_file")"
+}
 
 ZDOTDIR=$HOME
 export ZDOTDIR
@@ -36,7 +97,7 @@ export HOMEBREW_NO_ANALYTICS=1
 
 # JVM
 if [[ "$OSTYPE" == darwin* ]]; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JAVA_HOME=$(_zsh_cached_value java-home $_ZSH_INIT_CACHE_AGE /usr/libexec/java_home)
 else
     export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 fi

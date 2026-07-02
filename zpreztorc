@@ -41,15 +41,15 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'archive' \
-  'gpg' \
   'git' \
-  'python' \
   'syntax-highlighting' \
   'history-substring-search' \
-  'prompt' \
   'tmux' \
-  'node' \
   'completion'
+  # 'gpg' \
+  # 'prompt' \
+  # 'node' \
+  # 'python' \
 
 #
 # Autosuggestions
@@ -128,7 +128,9 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 # zstyle ':prezto:module:prompt' theme 'cloud' '>'
-zstyle ':prezto:module:prompt' theme 'starship'
+# Disabled in favor of a cached `starship init zsh` call in zshrc - Prezto's
+# starship theme (prompt-contrib) shells out uncached on every startup.
+zstyle ':prezto:module:prompt' theme 'off'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
@@ -218,7 +220,8 @@ zstyle ':prezto:module:terminal' auto-title 'always'
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
-zstyle ':prezto:module:tmux:auto-start' local 'yes'
+# Disabled while trying kitty's native splits instead of tmux.
+# zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
