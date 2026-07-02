@@ -18,4 +18,17 @@ return {
       { "<A-l>", function() require("smart-splits").resize_right() end, desc = "Resize right" },
     },
   },
+  {
+    "mikesmithgh/kitty-scrollback.nvim",
+    lazy = true,
+    cmd = {
+      "KittyScrollbackGenerateKittens",
+      "KittyScrollbackCheckHealth",
+      "KittyScrollbackGenerateCommandLineEditing",
+    },
+    event = { "User KittyScrollbackLaunch" },
+    config = function()
+      require("kitty-scrollback").setup()
+    end,
+  },
 }
