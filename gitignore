@@ -147,3 +147,4 @@ node_modules
 .cargo
 
 **/.claude/settings.local.json
+.requirements/
