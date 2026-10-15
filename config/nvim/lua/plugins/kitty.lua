@@ -1,14 +1,21 @@
 return {
   {
-    "mrjones2014/smart-splits.nvim",
-    -- installs the neighboring_window/relative_resize/split_window kittens
-    -- into ~/.config/kitty, required for the kitty multiplexer integration
-    build = "./kitty/install-kittens.bash",
-    -- must load eagerly: tmux/kitty integration relies on the
-    -- @pane-is-vim / IS_NVIM variable being set as soon as Neovim starts
-    event = "VeryLazy",
-    -- force loading as it seems not to lazy load appropriately
+    "smart-splits-nvim/smart-splits.nvim",
+    version = "^3",
+    -- must load eagerly: the tmux/kitty backends set @pane-is-vim / IS_NVIM
+    -- when the plugin loads, and until then the multiplexer swallows <C-hjkl>
     lazy = false,
+    dependencies = {
+      { "smart-splits-nvim/backend-tmux", main = "smart-splits-backend-tmux" },
+      { "smart-splits-nvim/backend-kitty", main = "smart-splits-backend-kitty" },
+    },
+    opts = {
+      mux = {
+        -- tmux first: when running inside tmux-in-kitty, tmux is the inner
+        -- multiplexer and owns the neighboring panes
+        backend = { "smart-splits-backend-tmux", "smart-splits-backend-kitty" },
+      },
+    },
     keys = {
       {
         "<C-h>",
