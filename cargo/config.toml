@@ -1,0 +1,4 @@
+[build]
+# Restores unchanged crates from a shared store, so a fresh worktree doesn't
+# recompile every dependency. RUSTC_WRAPPER= turns it off for one build.
+rustc-wrapper = "kache"
