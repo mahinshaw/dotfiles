@@ -21,6 +21,13 @@ fi
 
 # Customize to your needs...
 
+# Claude Code's Bash tool sources this file; its commands are not typed at a
+# prompt, so unmatched globs and `>` onto existing files must not fail.
+if [[ -n $CLAUDECODE ]]; then
+  unsetopt nomatch
+  setopt clobber
+fi
+
 # Chruby is awesome, let it do its magic
 # if [[ -e /usr/local/share/chruby ]]; then
 #   source /usr/local/share/chruby/chruby.sh
